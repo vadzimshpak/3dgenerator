@@ -1,13 +1,27 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
+import { redirect } from "@/i18n/navigation";
 import { prisma } from "@/lib/db";
+import { getSession } from "@/lib/session";
 import { GenerateForm } from "./GenerateForm";
+import { AssetsSection } from "@/components/AssetsSection";
 
 type Props = { params: Promise<{ locale: string }> };
 
 export default async function Home({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
+
+  const session = await getSession();
+  if (session) {
+    const activeOrder = await prisma.generateQueue.findFirst({
+      where: { userId: session.id, status: { in: [0, 1] } },
+      orderBy: { createdAt: "desc" },
+    });
+    if (activeOrder) {
+      redirect({ href: `/queue/${activeOrder.id}`, locale });
+      return null;
+    }
+  }
 
   const t = await getTranslations("home");
   const models = await prisma.generatedModel.findMany({
@@ -25,24 +39,7 @@ export default async function Home({ params }: Props) {
         />
       </section>
 
-      <section className="assets">
-        <h2 className="assets__title">{t("assets")}</h2>
-        <div className="assets__grid">
-          {models.map((model) => (
-            <Link
-              key={model.id}
-              href={`/assets/${model.id}`}
-              className="asset-card"
-            >
-              <span
-                className="asset-card__image"
-                style={{ backgroundImage: `url(${model.imageUrl})` }}
-              />
-              <span className="asset-card__name">{model.name}</span>
-            </Link>
-          ))}
-        </div>
-      </section>
+      <AssetsSection title={t("assets")} models={models} />
     </>
   );
 }

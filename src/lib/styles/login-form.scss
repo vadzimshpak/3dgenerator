@@ -109,3 +109,13 @@
   justify-content: center;
   padding: 12vh $space-md $space-xl;
 }
+
+.login-page--compact {
+  min-height: 0;
+}
+
+.login-page--compact .login-page__content {
+  flex: none;
+  padding-top: $space-xl;
+  padding-bottom: $space-lg;
+}

@@ -35,7 +35,28 @@ export default async function QueueOrderPage({ params }: Props) {
           {t("backToHome")}
         </Link>
         <h1 className="asset-detail__title">{t("title")} #{order.id}</h1>
+        <div
+          className="asset-detail__preview"
+          style={{
+            backgroundImage: `url(/api/queue/${order.id}/image)`,
+          }}
+        />
         <dl className="asset-detail__meta">
+          {order.resultFileUrl && (
+            <>
+              <dt className="asset-detail__meta-term">{t("downloadModel")}</dt>
+              <dd className="asset-detail__meta-desc">
+                <a
+                  href={order.resultFileUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="asset-detail__link"
+                >
+                  {t("downloadModelLink")}
+                </a>
+              </dd>
+            </>
+          )}
           <dt className="asset-detail__meta-term">{t("fileType")}</dt>
           <dd className="asset-detail__meta-desc">{order.fileType}</dd>
           <dt className="asset-detail__meta-term">{t("createdAt")}</dt>
@@ -49,7 +70,9 @@ export default async function QueueOrderPage({ params }: Props) {
             })}
           </dd>
           <dt className="asset-detail__meta-term">{t("status")}</dt>
-          <dd className="asset-detail__meta-desc">{t("statusInQueue")}</dd>
+          <dd className="asset-detail__meta-desc">
+            {t(`status${order.status}` as "status0" | "status1" | "status2")}
+          </dd>
         </dl>
       </div>
     </div>

@@ -1,15 +1,15 @@
 {
   "metadata": {
-    "title": "Image To 3D",
-    "description": "Генерация 3D-моделей из изображений"
+    "title": "Free Image To 3D",
+    "description": "Бесплатная генерация 3D-моделей из изображений"
   },
   "header": {
-    "logo": "Logo",
+    "logo": "3DMania",
     "login": "Вход",
     "profile": "Профиль"
   },
   "home": {
-    "title": "Image To 3D",
+    "title": "Картинка в 3D, бесплатно!",
     "subtitle": "Модель TRELLIS 2!",
     "selectImage": "Выбрать изображение",
     "generate": "Генерировать",
@@ -23,7 +23,11 @@
     "fileType": "Тип файла",
     "createdAt": "Дата создания",
     "status": "Статус",
-    "statusInQueue": "В очереди на обработку"
+    "status0": "В очереди на обработку",
+    "status1": "В обработке",
+    "status2": "Готов",
+    "downloadModel": "Скачать модель",
+    "downloadModelLink": "Скачать файл модели"
   },
   "login": {
     "title": "Вход",
@@ -45,7 +49,8 @@
     "loginLabel": "Логин",
     "createdAtLabel": "Дата регистрации",
     "logout": "Выйти",
-    "backHome": "На главную"
+    "backHome": "На главную",
+    "assets": "Мои модели"
   },
   "assetDetail": {
     "backToList": "← Назад к списку",

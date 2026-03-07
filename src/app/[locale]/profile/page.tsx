@@ -1,8 +1,9 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { redirect } from "@/i18n/navigation";
-import { Link } from "@/i18n/navigation";
+import { Link, redirect } from "@/i18n/navigation";
+import { prisma } from "@/lib/db";
 import { getSession } from "@/lib/session";
 import { logoutAction } from "@/app/actions";
+import { AssetsSection } from "@/components/AssetsSection";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -17,9 +18,14 @@ export default async function ProfilePage({ params }: Props) {
   }
 
   const t = await getTranslations("profile");
+  const models = await prisma.generatedModel.findMany({
+    where: { userId: session.id },
+    orderBy: { createdAt: "desc" },
+  });
 
   return (
-    <div className="login-page">
+    <>
+    <div className="login-page login-page--compact">
       <div className="login-page__content">
         <div className="login-form">
           <h1 className="login-form__title">{t("title")}</h1>
@@ -43,5 +49,8 @@ export default async function ProfilePage({ params }: Props) {
         </div>
       </div>
     </div>
+
+    <AssetsSection title={t("assets")} models={models} />
+    </>
   );
 }

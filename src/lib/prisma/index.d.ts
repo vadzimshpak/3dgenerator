@@ -2213,11 +2213,13 @@ export namespace Prisma {
 
   export type GenerateQueueAvgAggregateOutputType = {
     id: number | null
+    status: number | null
     userId: number | null
   }
 
   export type GenerateQueueSumAggregateOutputType = {
     id: number | null
+    status: number | null
     userId: number | null
   }
 
@@ -2225,6 +2227,8 @@ export namespace Prisma {
     id: number | null
     file: Bytes | null
     fileType: string | null
+    status: number | null
+    resultFileUrl: string | null
     userId: number | null
     createdAt: Date | null
   }
@@ -2233,6 +2237,8 @@ export namespace Prisma {
     id: number | null
     file: Bytes | null
     fileType: string | null
+    status: number | null
+    resultFileUrl: string | null
     userId: number | null
     createdAt: Date | null
   }
@@ -2241,6 +2247,8 @@ export namespace Prisma {
     id: number
     file: number
     fileType: number
+    status: number
+    resultFileUrl: number
     userId: number
     createdAt: number
     _all: number
@@ -2249,11 +2257,13 @@ export namespace Prisma {
 
   export type GenerateQueueAvgAggregateInputType = {
     id?: true
+    status?: true
     userId?: true
   }
 
   export type GenerateQueueSumAggregateInputType = {
     id?: true
+    status?: true
     userId?: true
   }
 
@@ -2261,6 +2271,8 @@ export namespace Prisma {
     id?: true
     file?: true
     fileType?: true
+    status?: true
+    resultFileUrl?: true
     userId?: true
     createdAt?: true
   }
@@ -2269,6 +2281,8 @@ export namespace Prisma {
     id?: true
     file?: true
     fileType?: true
+    status?: true
+    resultFileUrl?: true
     userId?: true
     createdAt?: true
   }
@@ -2277,6 +2291,8 @@ export namespace Prisma {
     id?: true
     file?: true
     fileType?: true
+    status?: true
+    resultFileUrl?: true
     userId?: true
     createdAt?: true
     _all?: true
@@ -2372,6 +2388,8 @@ export namespace Prisma {
     id: number
     file: Bytes
     fileType: string
+    status: number
+    resultFileUrl: string | null
     userId: number
     createdAt: Date
     _count: GenerateQueueCountAggregateOutputType | null
@@ -2399,6 +2417,8 @@ export namespace Prisma {
     id?: boolean
     file?: boolean
     fileType?: boolean
+    status?: boolean
+    resultFileUrl?: boolean
     userId?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -2408,6 +2428,8 @@ export namespace Prisma {
     id?: boolean
     file?: boolean
     fileType?: boolean
+    status?: boolean
+    resultFileUrl?: boolean
     userId?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -2417,6 +2439,8 @@ export namespace Prisma {
     id?: boolean
     file?: boolean
     fileType?: boolean
+    status?: boolean
+    resultFileUrl?: boolean
     userId?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -2426,11 +2450,13 @@ export namespace Prisma {
     id?: boolean
     file?: boolean
     fileType?: boolean
+    status?: boolean
+    resultFileUrl?: boolean
     userId?: boolean
     createdAt?: boolean
   }
 
-  export type GenerateQueueOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "file" | "fileType" | "userId" | "createdAt", ExtArgs["result"]["generateQueue"]>
+  export type GenerateQueueOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "file" | "fileType" | "status" | "resultFileUrl" | "userId" | "createdAt", ExtArgs["result"]["generateQueue"]>
   export type GenerateQueueInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -2450,6 +2476,8 @@ export namespace Prisma {
       id: number
       file: Prisma.Bytes
       fileType: string
+      status: number
+      resultFileUrl: string | null
       userId: number
       createdAt: Date
     }, ExtArgs["result"]["generateQueue"]>
@@ -2879,6 +2907,8 @@ export namespace Prisma {
     readonly id: FieldRef<"GenerateQueue", 'Int'>
     readonly file: FieldRef<"GenerateQueue", 'Bytes'>
     readonly fileType: FieldRef<"GenerateQueue", 'String'>
+    readonly status: FieldRef<"GenerateQueue", 'Int'>
+    readonly resultFileUrl: FieldRef<"GenerateQueue", 'String'>
     readonly userId: FieldRef<"GenerateQueue", 'Int'>
     readonly createdAt: FieldRef<"GenerateQueue", 'DateTime'>
   }
@@ -4444,6 +4474,8 @@ export namespace Prisma {
     id: 'id',
     file: 'file',
     fileType: 'fileType',
+    status: 'status',
+    resultFileUrl: 'resultFileUrl',
     userId: 'userId',
     createdAt: 'createdAt'
   };
@@ -4584,6 +4616,8 @@ export namespace Prisma {
     id?: IntFilter<"GenerateQueue"> | number
     file?: BytesFilter<"GenerateQueue"> | Bytes
     fileType?: StringFilter<"GenerateQueue"> | string
+    status?: IntFilter<"GenerateQueue"> | number
+    resultFileUrl?: StringNullableFilter<"GenerateQueue"> | string | null
     userId?: IntFilter<"GenerateQueue"> | number
     createdAt?: DateTimeFilter<"GenerateQueue"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -4593,6 +4627,8 @@ export namespace Prisma {
     id?: SortOrder
     file?: SortOrder
     fileType?: SortOrder
+    status?: SortOrder
+    resultFileUrl?: SortOrderInput | SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     user?: UserOrderByWithRelationInput
@@ -4605,6 +4641,8 @@ export namespace Prisma {
     NOT?: GenerateQueueWhereInput | GenerateQueueWhereInput[]
     file?: BytesFilter<"GenerateQueue"> | Bytes
     fileType?: StringFilter<"GenerateQueue"> | string
+    status?: IntFilter<"GenerateQueue"> | number
+    resultFileUrl?: StringNullableFilter<"GenerateQueue"> | string | null
     userId?: IntFilter<"GenerateQueue"> | number
     createdAt?: DateTimeFilter<"GenerateQueue"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -4614,6 +4652,8 @@ export namespace Prisma {
     id?: SortOrder
     file?: SortOrder
     fileType?: SortOrder
+    status?: SortOrder
+    resultFileUrl?: SortOrderInput | SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     _count?: GenerateQueueCountOrderByAggregateInput
@@ -4630,6 +4670,8 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"GenerateQueue"> | number
     file?: BytesWithAggregatesFilter<"GenerateQueue"> | Bytes
     fileType?: StringWithAggregatesFilter<"GenerateQueue"> | string
+    status?: IntWithAggregatesFilter<"GenerateQueue"> | number
+    resultFileUrl?: StringNullableWithAggregatesFilter<"GenerateQueue"> | string | null
     userId?: IntWithAggregatesFilter<"GenerateQueue"> | number
     createdAt?: DateTimeWithAggregatesFilter<"GenerateQueue"> | Date | string
   }
@@ -4753,6 +4795,8 @@ export namespace Prisma {
   export type GenerateQueueCreateInput = {
     file: Bytes
     fileType: string
+    status?: number
+    resultFileUrl?: string | null
     createdAt?: Date | string
     user: UserCreateNestedOneWithoutGenerateQueueInput
   }
@@ -4761,6 +4805,8 @@ export namespace Prisma {
     id?: number
     file: Bytes
     fileType: string
+    status?: number
+    resultFileUrl?: string | null
     userId: number
     createdAt?: Date | string
   }
@@ -4768,6 +4814,8 @@ export namespace Prisma {
   export type GenerateQueueUpdateInput = {
     file?: BytesFieldUpdateOperationsInput | Bytes
     fileType?: StringFieldUpdateOperationsInput | string
+    status?: IntFieldUpdateOperationsInput | number
+    resultFileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutGenerateQueueNestedInput
   }
@@ -4776,6 +4824,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     file?: BytesFieldUpdateOperationsInput | Bytes
     fileType?: StringFieldUpdateOperationsInput | string
+    status?: IntFieldUpdateOperationsInput | number
+    resultFileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4784,6 +4834,8 @@ export namespace Prisma {
     id?: number
     file: Bytes
     fileType: string
+    status?: number
+    resultFileUrl?: string | null
     userId: number
     createdAt?: Date | string
   }
@@ -4791,6 +4843,8 @@ export namespace Prisma {
   export type GenerateQueueUpdateManyMutationInput = {
     file?: BytesFieldUpdateOperationsInput | Bytes
     fileType?: StringFieldUpdateOperationsInput | string
+    status?: IntFieldUpdateOperationsInput | number
+    resultFileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -4798,6 +4852,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     file?: BytesFieldUpdateOperationsInput | Bytes
     fileType?: StringFieldUpdateOperationsInput | string
+    status?: IntFieldUpdateOperationsInput | number
+    resultFileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5000,21 +5056,43 @@ export namespace Prisma {
     not?: NestedBytesFilter<$PrismaModel> | Bytes
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type GenerateQueueCountOrderByAggregateInput = {
     id?: SortOrder
     file?: SortOrder
     fileType?: SortOrder
+    status?: SortOrder
+    resultFileUrl?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
   }
 
   export type GenerateQueueAvgOrderByAggregateInput = {
     id?: SortOrder
+    status?: SortOrder
     userId?: SortOrder
   }
 
@@ -5022,6 +5100,8 @@ export namespace Prisma {
     id?: SortOrder
     file?: SortOrder
     fileType?: SortOrder
+    status?: SortOrder
+    resultFileUrl?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
   }
@@ -5030,12 +5110,15 @@ export namespace Prisma {
     id?: SortOrder
     file?: SortOrder
     fileType?: SortOrder
+    status?: SortOrder
+    resultFileUrl?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
   }
 
   export type GenerateQueueSumOrderByAggregateInput = {
     id?: SortOrder
+    status?: SortOrder
     userId?: SortOrder
   }
 
@@ -5047,6 +5130,23 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBytesFilter<$PrismaModel>
     _max?: NestedBytesFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type IntNullableFilter<$PrismaModel = never> = {
@@ -5063,11 +5163,6 @@ export namespace Prisma {
   export type UserNullableScalarRelationFilter = {
     is?: UserWhereInput | null
     isNot?: UserWhereInput | null
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
   }
 
   export type GeneratedModelCountOrderByAggregateInput = {
@@ -5233,6 +5328,10 @@ export namespace Prisma {
     set?: Bytes
   }
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type UserUpdateOneRequiredWithoutGenerateQueueNestedInput = {
     create?: XOR<UserCreateWithoutGenerateQueueInput, UserUncheckedCreateWithoutGenerateQueueInput>
     connectOrCreate?: UserCreateOrConnectWithoutGenerateQueueInput
@@ -5366,6 +5465,20 @@ export namespace Prisma {
     not?: NestedBytesFilter<$PrismaModel> | Bytes
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedBytesWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Bytes | BytesFieldRefInput<$PrismaModel>
     in?: Bytes[]
@@ -5374,6 +5487,23 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBytesFilter<$PrismaModel>
     _max?: NestedBytesFilter<$PrismaModel>
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type NestedIntNullableFilter<$PrismaModel = never> = {
@@ -5441,6 +5571,8 @@ export namespace Prisma {
   export type GenerateQueueCreateWithoutUserInput = {
     file: Bytes
     fileType: string
+    status?: number
+    resultFileUrl?: string | null
     createdAt?: Date | string
   }
 
@@ -5448,6 +5580,8 @@ export namespace Prisma {
     id?: number
     file: Bytes
     fileType: string
+    status?: number
+    resultFileUrl?: string | null
     createdAt?: Date | string
   }
 
@@ -5511,6 +5645,8 @@ export namespace Prisma {
     id?: IntFilter<"GenerateQueue"> | number
     file?: BytesFilter<"GenerateQueue"> | Bytes
     fileType?: StringFilter<"GenerateQueue"> | string
+    status?: IntFilter<"GenerateQueue"> | number
+    resultFileUrl?: StringNullableFilter<"GenerateQueue"> | string | null
     userId?: IntFilter<"GenerateQueue"> | number
     createdAt?: DateTimeFilter<"GenerateQueue"> | Date | string
   }
@@ -5619,6 +5755,8 @@ export namespace Prisma {
     id?: number
     file: Bytes
     fileType: string
+    status?: number
+    resultFileUrl?: string | null
     createdAt?: Date | string
   }
 
@@ -5648,6 +5786,8 @@ export namespace Prisma {
   export type GenerateQueueUpdateWithoutUserInput = {
     file?: BytesFieldUpdateOperationsInput | Bytes
     fileType?: StringFieldUpdateOperationsInput | string
+    status?: IntFieldUpdateOperationsInput | number
+    resultFileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5655,6 +5795,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     file?: BytesFieldUpdateOperationsInput | Bytes
     fileType?: StringFieldUpdateOperationsInput | string
+    status?: IntFieldUpdateOperationsInput | number
+    resultFileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5662,6 +5804,8 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     file?: BytesFieldUpdateOperationsInput | Bytes
     fileType?: StringFieldUpdateOperationsInput | string
+    status?: IntFieldUpdateOperationsInput | number
+    resultFileUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
