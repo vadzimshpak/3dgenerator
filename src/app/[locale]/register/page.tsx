@@ -1,0 +1,17 @@
+import { setRequestLocale } from "next-intl/server";
+import { RegisterForm } from "./RegisterForm";
+
+type Props = { params: Promise<{ locale: string }> };
+
+export default async function RegisterPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
+  return (
+    <div className="login-page">
+      <div className="login-page__content">
+        <RegisterForm />
+      </div>
+    </div>
+  );
+}

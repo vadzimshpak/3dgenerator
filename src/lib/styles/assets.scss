@@ -1,0 +1,66 @@
+@use "variables" as *;
+@use "mixins" as *;
+@use "animations" as *;
+
+.assets {
+  padding: 0 $space-md $space-xl;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.assets__title {
+  @include slide-up(0.5s, 0.1s);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: $color-text;
+  margin: 0 0 $space-md;
+}
+
+.assets__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: $space-md;
+}
+
+.asset-card {
+  @include glass;
+  opacity: 0;
+  animation: slideUp 0.4s ease-out forwards;
+  border-radius: $radius-md;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  @for $i from 0 through 11 {
+    &:nth-child(#{$i + 1}) {
+      animation-delay: #{0.15s + $i * 0.04s};
+    }
+  }
+}
+
+.asset-card__image {
+  display: block;
+  aspect-ratio: 1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+}
+
+.asset-card__name {
+  padding: $space-sm;
+  color: $color-text;
+  font-size: 0.9rem;
+  font-weight: 500;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-shrink: 0;
+}

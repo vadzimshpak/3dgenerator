@@ -1,0 +1,111 @@
+@use "variables" as *;
+@use "mixins" as *;
+@use "animations" as *;
+
+.login-form {
+  @include glass;
+  @include slide-up(0.5s, 0.1s);
+  width: 100%;
+  max-width: 400px;
+  padding: $space-lg;
+  border-radius: $radius-md;
+}
+
+.login-form__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: $color-text;
+  margin: 0 0 $space-md;
+}
+
+.login-form__text {
+  color: $color-text;
+  margin: 0 0 $space-sm;
+}
+
+.login-form__field {
+  margin-bottom: $space-md;
+
+  &:last-of-type {
+    margin-bottom: $space-lg;
+  }
+}
+
+.login-form__label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: $color-text;
+  margin-bottom: $space-xs;
+}
+
+.login-form__input {
+  @include glass($blur: 8px, $bg: rgba(30, 30, 30, 0.6), $border: $glass-border);
+  width: 100%;
+  padding: $space-sm $space-md;
+  border-radius: $radius-sm;
+  color: $color-text;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: $color-text-muted;
+  }
+
+  &:focus {
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+}
+
+.login-form__error {
+  color: $color-cherry;
+  font-size: 0.875rem;
+  margin: 0 0 $space-md;
+}
+
+.login-form__submit {
+  @include glass($blur: 8px, $bg: $color-cherry, $border: transparent);
+  width: 100%;
+  padding: $space-sm $space-md;
+  border-radius: $radius-sm;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover {
+    background: $color-cherry-hover;
+  }
+}
+
+.login-form__link-wrap {
+  margin-top: $space-sm;
+  text-align: center;
+}
+
+.login-form__link {
+  font-size: 0.875rem;
+  color: $color-text-muted;
+  text-decoration: none;
+  transition: color 0.2s;
+
+  &:hover {
+    color: $color-cherry;
+  }
+}
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-page__content {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 12vh $space-md $space-xl;
+}

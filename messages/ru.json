@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "title": "Image To 3D",
+    "description": "Генерация 3D-моделей из изображений"
+  },
+  "header": {
+    "logo": "Logo",
+    "login": "Вход",
+    "profile": "Профиль"
+  },
+  "home": {
+    "title": "Image To 3D",
+    "subtitle": "Модель TRELLIS 2!",
+    "selectImage": "Выбрать изображение",
+    "generate": "Генерировать",
+    "assets": "Модели пользователей"
+  },
+  "login": {
+    "title": "Вход",
+    "loginLabel": "Логин",
+    "passwordLabel": "Пароль",
+    "loginPlaceholder": "Введите логин",
+    "passwordPlaceholder": "Введите пароль",
+    "submit": "Войти",
+    "createAccount": "Создать аккаунт"
+  },
+  "register": {
+    "passwordConfirmLabel": "Подтверждение пароля",
+    "passwordConfirmPlaceholder": "Повторите пароль",
+    "submit": "Зарегистрироваться",
+    "signIn": "Войти"
+  },
+  "profile": {
+    "title": "Профиль",
+    "loginLabel": "Логин",
+    "createdAtLabel": "Дата регистрации",
+    "logout": "Выйти",
+    "backHome": "На главную"
+  },
+  "assetDetail": {
+    "backToList": "← Назад к списку",
+    "author": "Автор",
+    "createdAt": "Дата создания",
+    "fileLabel": "Файл модели"
+  },
+  "auth": {
+    "errorLoginRequired": "Введите логин и пароль",
+    "errorInvalidCredentials": "Неверный логин или пароль",
+    "errorLoginRequiredRegister": "Введите логин",
+    "errorPasswordRequired": "Введите пароль",
+    "errorPasswordsDontMatch": "Пароли не совпадают",
+    "errorLoginExists": "Пользователь с таким логином уже существует"
+  }
+}

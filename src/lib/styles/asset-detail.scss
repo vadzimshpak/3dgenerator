@@ -1,0 +1,75 @@
+@use "variables" as *;
+@use "mixins" as *;
+@use "animations" as *;
+
+.asset-detail {
+  padding: $space-xl $space-md;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.asset-detail__content {
+  @include glass;
+  @include slide-up(0.5s, 0.05s);
+  padding: $space-lg;
+  border-radius: $radius-md;
+}
+
+.asset-detail__back {
+  display: inline-block;
+  font-size: 0.9rem;
+  color: $color-text-muted;
+  text-decoration: none;
+  margin-bottom: $space-md;
+  transition: color 0.2s;
+
+  &:hover {
+    color: $color-cherry;
+  }
+}
+
+.asset-detail__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: $color-text;
+  margin: 0 0 $space-md;
+}
+
+.asset-detail__preview {
+  aspect-ratio: 16 / 10;
+  border-radius: $radius-sm;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: $space-lg;
+}
+
+.asset-detail__meta {
+  margin: 0;
+}
+
+.asset-detail__meta-term {
+  font-size: 0.8rem;
+  color: $color-text-muted;
+  margin-bottom: $space-xs;
+}
+
+.asset-detail__meta-desc {
+  margin: 0 0 $space-md;
+  color: $color-text;
+  font-size: 1rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.asset-detail__link {
+  color: $color-cherry;
+  text-decoration: none;
+  word-break: break-all;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

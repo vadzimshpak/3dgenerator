@@ -1,0 +1,7 @@
+@use "variables" as *;
+
+@mixin glass($blur: $glass-blur, $bg: $glass-bg, $border: $glass-border) {
+  background: $bg;
+  backdrop-filter: blur($blur);
+  border: 1px solid $border;
+}

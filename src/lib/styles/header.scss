@@ -1,0 +1,75 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.header {
+  @include glass($blur: 16px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $space-sm $space-md;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header__logo {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: $color-text;
+  text-decoration: none;
+}
+
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+}
+
+.header__lang-list {
+  display: flex;
+  align-items: center;
+  gap: $space-xs;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.header__lang-item {
+  margin: 0;
+}
+
+.header__lang-btn {
+  padding: $space-xs $space-sm;
+  border: none;
+  border-radius: $radius-sm;
+  background: transparent;
+  color: $color-text-muted;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+
+  &:hover {
+    color: $color-text;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  &.header__lang-btn_active {
+    color: $color-cherry;
+    background: $color-cherry-light;
+  }
+}
+
+.header__login {
+  padding: $space-xs $space-sm;
+  border-radius: $radius-sm;
+  background: $color-cherry;
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s;
+
+  &:hover {
+    background: $color-cherry-hover;
+  }
+}

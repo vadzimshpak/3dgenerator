@@ -1,0 +1,29 @@
+// https://pris.ly/d/prisma-schema-reference
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/lib/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               Int              @id @default(autoincrement())
+  login            String           @unique
+  password         String
+  createdAt        DateTime         @default(now())
+  generatedModels  GeneratedModel[]
+}
+
+model GeneratedModel {
+  id        Int      @id @default(autoincrement())
+  name      String
+  fileUrl   String
+  imageUrl  String
+  createdAt DateTime @default(now())
+  userId    Int?
+  user      User?    @relation(fields: [userId], references: [id])
+}

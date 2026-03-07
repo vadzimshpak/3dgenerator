@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "title": "Image To 3D",
+    "description": "3D model generation from images"
+  },
+  "header": {
+    "logo": "Logo",
+    "login": "Login",
+    "profile": "Profile"
+  },
+  "home": {
+    "title": "Image To 3D",
+    "subtitle": "TRELLIS 2 model!",
+    "selectImage": "Select Image",
+    "generate": "Generate",
+    "assets": "Assets"
+  },
+  "login": {
+    "title": "Login",
+    "loginLabel": "Login",
+    "passwordLabel": "Password",
+    "loginPlaceholder": "Enter login",
+    "passwordPlaceholder": "Enter password",
+    "submit": "Login",
+    "createAccount": "Create account"
+  },
+  "register": {
+    "passwordConfirmLabel": "Password confirmation",
+    "passwordConfirmPlaceholder": "Repeat password",
+    "submit": "Sign up",
+    "signIn": "Sign in"
+  },
+  "profile": {
+    "title": "Profile",
+    "loginLabel": "Login",
+    "createdAtLabel": "Registration date",
+    "logout": "Log out",
+    "backHome": "Back to home"
+  },
+  "assetDetail": {
+    "backToList": "← Back to list",
+    "author": "Author",
+    "createdAt": "Created at",
+    "fileLabel": "Model file"
+  },
+  "auth": {
+    "errorLoginRequired": "Enter login and password",
+    "errorInvalidCredentials": "Invalid login or password",
+    "errorLoginRequiredRegister": "Enter login",
+    "errorPasswordRequired": "Enter password",
+    "errorPasswordsDontMatch": "Passwords do not match",
+    "errorLoginExists": "User with this login already exists"
+  }
+}
