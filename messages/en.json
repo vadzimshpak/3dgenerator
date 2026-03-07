@@ -13,7 +13,17 @@
     "subtitle": "TRELLIS 2 model!",
     "selectImage": "Select Image",
     "generate": "Generate",
-    "assets": "Assets"
+    "assets": "Assets",
+    "errorNoFile": "Please select an image first",
+    "errorNotImage": "File must be an image"
+  },
+  "queue": {
+    "title": "Order",
+    "backToHome": "← Back to home",
+    "fileType": "File type",
+    "createdAt": "Created at",
+    "status": "Status",
+    "statusInQueue": "In queue for processing"
   },
   "login": {
     "title": "Login",

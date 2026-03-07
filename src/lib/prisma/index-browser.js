@@ -125,6 +125,14 @@ exports.Prisma.UserScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.GenerateQueueScalarFieldEnum = {
+  id: 'id',
+  file: 'file',
+  fileType: 'fileType',
+  userId: 'userId',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.GeneratedModelScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -147,6 +155,7 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   User: 'User',
+  GenerateQueue: 'GenerateQueue',
   GeneratedModel: 'GeneratedModel'
 };
 

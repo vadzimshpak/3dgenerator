@@ -16,6 +16,16 @@ model User {
   password         String
   createdAt        DateTime         @default(now())
   generatedModels  GeneratedModel[]
+  generateQueue    GenerateQueue[]
+}
+
+model GenerateQueue {
+  id        Int      @id @default(autoincrement())
+  file      Bytes
+  fileType  String
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
 }
 
 model GeneratedModel {

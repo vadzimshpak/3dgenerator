@@ -13,7 +13,17 @@
     "subtitle": "Модель TRELLIS 2!",
     "selectImage": "Выбрать изображение",
     "generate": "Генерировать",
-    "assets": "Модели пользователей"
+    "assets": "Модели пользователей",
+    "errorNoFile": "Сначала выберите изображение",
+    "errorNotImage": "Файл должен быть изображением"
+  },
+  "queue": {
+    "title": "Заказ",
+    "backToHome": "← На главную",
+    "fileType": "Тип файла",
+    "createdAt": "Дата создания",
+    "status": "Статус",
+    "statusInQueue": "В очереди на обработку"
   },
   "login": {
     "title": "Вход",

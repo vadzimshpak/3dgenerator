@@ -19,6 +19,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
 /**
+ * Model GenerateQueue
+ * 
+ */
+export type GenerateQueue = $Result.DefaultSelection<Prisma.$GenerateQueuePayload>
+/**
  * Model GeneratedModel
  * 
  */
@@ -151,6 +156,16 @@ export class PrismaClient<
     * ```
     */
   get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.generateQueue`: Exposes CRUD operations for the **GenerateQueue** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more GenerateQueues
+    * const generateQueues = await prisma.generateQueue.findMany()
+    * ```
+    */
+  get generateQueue(): Prisma.GenerateQueueDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.generatedModel`: Exposes CRUD operations for the **GeneratedModel** model.
@@ -603,6 +618,7 @@ export namespace Prisma {
 
   export const ModelName: {
     User: 'User',
+    GenerateQueue: 'GenerateQueue',
     GeneratedModel: 'GeneratedModel'
   };
 
@@ -622,7 +638,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "generatedModel"
+      modelProps: "user" | "generateQueue" | "generatedModel"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -697,6 +713,80 @@ export namespace Prisma {
           count: {
             args: Prisma.UserCountArgs<ExtArgs>
             result: $Utils.Optional<UserCountAggregateOutputType> | number
+          }
+        }
+      }
+      GenerateQueue: {
+        payload: Prisma.$GenerateQueuePayload<ExtArgs>
+        fields: Prisma.GenerateQueueFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.GenerateQueueFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateQueuePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.GenerateQueueFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateQueuePayload>
+          }
+          findFirst: {
+            args: Prisma.GenerateQueueFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateQueuePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.GenerateQueueFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateQueuePayload>
+          }
+          findMany: {
+            args: Prisma.GenerateQueueFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateQueuePayload>[]
+          }
+          create: {
+            args: Prisma.GenerateQueueCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateQueuePayload>
+          }
+          createMany: {
+            args: Prisma.GenerateQueueCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.GenerateQueueCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateQueuePayload>[]
+          }
+          delete: {
+            args: Prisma.GenerateQueueDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateQueuePayload>
+          }
+          update: {
+            args: Prisma.GenerateQueueUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateQueuePayload>
+          }
+          deleteMany: {
+            args: Prisma.GenerateQueueDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.GenerateQueueUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.GenerateQueueUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateQueuePayload>[]
+          }
+          upsert: {
+            args: Prisma.GenerateQueueUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GenerateQueuePayload>
+          }
+          aggregate: {
+            args: Prisma.GenerateQueueAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateGenerateQueue>
+          }
+          groupBy: {
+            args: Prisma.GenerateQueueGroupByArgs<ExtArgs>
+            result: $Utils.Optional<GenerateQueueGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.GenerateQueueCountArgs<ExtArgs>
+            result: $Utils.Optional<GenerateQueueCountAggregateOutputType> | number
           }
         }
       }
@@ -871,6 +961,7 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     user?: UserOmit
+    generateQueue?: GenerateQueueOmit
     generatedModel?: GeneratedModelOmit
   }
 
@@ -953,10 +1044,12 @@ export namespace Prisma {
 
   export type UserCountOutputType = {
     generatedModels: number
+    generateQueue: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     generatedModels?: boolean | UserCountOutputTypeCountGeneratedModelsArgs
+    generateQueue?: boolean | UserCountOutputTypeCountGenerateQueueArgs
   }
 
   // Custom InputTypes
@@ -975,6 +1068,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountGeneratedModelsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: GeneratedModelWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountGenerateQueueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GenerateQueueWhereInput
   }
 
 
@@ -1173,6 +1273,7 @@ export namespace Prisma {
     password?: boolean
     createdAt?: boolean
     generatedModels?: boolean | User$generatedModelsArgs<ExtArgs>
+    generateQueue?: boolean | User$generateQueueArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1200,6 +1301,7 @@ export namespace Prisma {
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "login" | "password" | "createdAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     generatedModels?: boolean | User$generatedModelsArgs<ExtArgs>
+    generateQueue?: boolean | User$generateQueueArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1209,6 +1311,7 @@ export namespace Prisma {
     name: "User"
     objects: {
       generatedModels: Prisma.$GeneratedModelPayload<ExtArgs>[]
+      generateQueue: Prisma.$GenerateQueuePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -1610,6 +1713,7 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     generatedModels<T extends User$generatedModelsArgs<ExtArgs> = {}>(args?: Subset<T, User$generatedModelsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GeneratedModelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    generateQueue<T extends User$generateQueueArgs<ExtArgs> = {}>(args?: Subset<T, User$generateQueueArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GenerateQueuePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2053,6 +2157,30 @@ export namespace Prisma {
   }
 
   /**
+   * User.generateQueue
+   */
+  export type User$generateQueueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateQueue
+     */
+    select?: GenerateQueueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateQueue
+     */
+    omit?: GenerateQueueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateQueueInclude<ExtArgs> | null
+    where?: GenerateQueueWhereInput
+    orderBy?: GenerateQueueOrderByWithRelationInput | GenerateQueueOrderByWithRelationInput[]
+    cursor?: GenerateQueueWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: GenerateQueueScalarFieldEnum | GenerateQueueScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2068,6 +2196,1100 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model GenerateQueue
+   */
+
+  export type AggregateGenerateQueue = {
+    _count: GenerateQueueCountAggregateOutputType | null
+    _avg: GenerateQueueAvgAggregateOutputType | null
+    _sum: GenerateQueueSumAggregateOutputType | null
+    _min: GenerateQueueMinAggregateOutputType | null
+    _max: GenerateQueueMaxAggregateOutputType | null
+  }
+
+  export type GenerateQueueAvgAggregateOutputType = {
+    id: number | null
+    userId: number | null
+  }
+
+  export type GenerateQueueSumAggregateOutputType = {
+    id: number | null
+    userId: number | null
+  }
+
+  export type GenerateQueueMinAggregateOutputType = {
+    id: number | null
+    file: Bytes | null
+    fileType: string | null
+    userId: number | null
+    createdAt: Date | null
+  }
+
+  export type GenerateQueueMaxAggregateOutputType = {
+    id: number | null
+    file: Bytes | null
+    fileType: string | null
+    userId: number | null
+    createdAt: Date | null
+  }
+
+  export type GenerateQueueCountAggregateOutputType = {
+    id: number
+    file: number
+    fileType: number
+    userId: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type GenerateQueueAvgAggregateInputType = {
+    id?: true
+    userId?: true
+  }
+
+  export type GenerateQueueSumAggregateInputType = {
+    id?: true
+    userId?: true
+  }
+
+  export type GenerateQueueMinAggregateInputType = {
+    id?: true
+    file?: true
+    fileType?: true
+    userId?: true
+    createdAt?: true
+  }
+
+  export type GenerateQueueMaxAggregateInputType = {
+    id?: true
+    file?: true
+    fileType?: true
+    userId?: true
+    createdAt?: true
+  }
+
+  export type GenerateQueueCountAggregateInputType = {
+    id?: true
+    file?: true
+    fileType?: true
+    userId?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type GenerateQueueAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GenerateQueue to aggregate.
+     */
+    where?: GenerateQueueWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GenerateQueues to fetch.
+     */
+    orderBy?: GenerateQueueOrderByWithRelationInput | GenerateQueueOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: GenerateQueueWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GenerateQueues from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GenerateQueues.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned GenerateQueues
+    **/
+    _count?: true | GenerateQueueCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: GenerateQueueAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: GenerateQueueSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: GenerateQueueMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: GenerateQueueMaxAggregateInputType
+  }
+
+  export type GetGenerateQueueAggregateType<T extends GenerateQueueAggregateArgs> = {
+        [P in keyof T & keyof AggregateGenerateQueue]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateGenerateQueue[P]>
+      : GetScalarType<T[P], AggregateGenerateQueue[P]>
+  }
+
+
+
+
+  export type GenerateQueueGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GenerateQueueWhereInput
+    orderBy?: GenerateQueueOrderByWithAggregationInput | GenerateQueueOrderByWithAggregationInput[]
+    by: GenerateQueueScalarFieldEnum[] | GenerateQueueScalarFieldEnum
+    having?: GenerateQueueScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: GenerateQueueCountAggregateInputType | true
+    _avg?: GenerateQueueAvgAggregateInputType
+    _sum?: GenerateQueueSumAggregateInputType
+    _min?: GenerateQueueMinAggregateInputType
+    _max?: GenerateQueueMaxAggregateInputType
+  }
+
+  export type GenerateQueueGroupByOutputType = {
+    id: number
+    file: Bytes
+    fileType: string
+    userId: number
+    createdAt: Date
+    _count: GenerateQueueCountAggregateOutputType | null
+    _avg: GenerateQueueAvgAggregateOutputType | null
+    _sum: GenerateQueueSumAggregateOutputType | null
+    _min: GenerateQueueMinAggregateOutputType | null
+    _max: GenerateQueueMaxAggregateOutputType | null
+  }
+
+  type GetGenerateQueueGroupByPayload<T extends GenerateQueueGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<GenerateQueueGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof GenerateQueueGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], GenerateQueueGroupByOutputType[P]>
+            : GetScalarType<T[P], GenerateQueueGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type GenerateQueueSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    file?: boolean
+    fileType?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["generateQueue"]>
+
+  export type GenerateQueueSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    file?: boolean
+    fileType?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["generateQueue"]>
+
+  export type GenerateQueueSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    file?: boolean
+    fileType?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["generateQueue"]>
+
+  export type GenerateQueueSelectScalar = {
+    id?: boolean
+    file?: boolean
+    fileType?: boolean
+    userId?: boolean
+    createdAt?: boolean
+  }
+
+  export type GenerateQueueOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "file" | "fileType" | "userId" | "createdAt", ExtArgs["result"]["generateQueue"]>
+  export type GenerateQueueInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type GenerateQueueIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type GenerateQueueIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $GenerateQueuePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "GenerateQueue"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      file: Prisma.Bytes
+      fileType: string
+      userId: number
+      createdAt: Date
+    }, ExtArgs["result"]["generateQueue"]>
+    composites: {}
+  }
+
+  type GenerateQueueGetPayload<S extends boolean | null | undefined | GenerateQueueDefaultArgs> = $Result.GetResult<Prisma.$GenerateQueuePayload, S>
+
+  type GenerateQueueCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<GenerateQueueFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: GenerateQueueCountAggregateInputType | true
+    }
+
+  export interface GenerateQueueDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['GenerateQueue'], meta: { name: 'GenerateQueue' } }
+    /**
+     * Find zero or one GenerateQueue that matches the filter.
+     * @param {GenerateQueueFindUniqueArgs} args - Arguments to find a GenerateQueue
+     * @example
+     * // Get one GenerateQueue
+     * const generateQueue = await prisma.generateQueue.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends GenerateQueueFindUniqueArgs>(args: SelectSubset<T, GenerateQueueFindUniqueArgs<ExtArgs>>): Prisma__GenerateQueueClient<$Result.GetResult<Prisma.$GenerateQueuePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one GenerateQueue that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {GenerateQueueFindUniqueOrThrowArgs} args - Arguments to find a GenerateQueue
+     * @example
+     * // Get one GenerateQueue
+     * const generateQueue = await prisma.generateQueue.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends GenerateQueueFindUniqueOrThrowArgs>(args: SelectSubset<T, GenerateQueueFindUniqueOrThrowArgs<ExtArgs>>): Prisma__GenerateQueueClient<$Result.GetResult<Prisma.$GenerateQueuePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first GenerateQueue that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GenerateQueueFindFirstArgs} args - Arguments to find a GenerateQueue
+     * @example
+     * // Get one GenerateQueue
+     * const generateQueue = await prisma.generateQueue.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends GenerateQueueFindFirstArgs>(args?: SelectSubset<T, GenerateQueueFindFirstArgs<ExtArgs>>): Prisma__GenerateQueueClient<$Result.GetResult<Prisma.$GenerateQueuePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first GenerateQueue that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GenerateQueueFindFirstOrThrowArgs} args - Arguments to find a GenerateQueue
+     * @example
+     * // Get one GenerateQueue
+     * const generateQueue = await prisma.generateQueue.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends GenerateQueueFindFirstOrThrowArgs>(args?: SelectSubset<T, GenerateQueueFindFirstOrThrowArgs<ExtArgs>>): Prisma__GenerateQueueClient<$Result.GetResult<Prisma.$GenerateQueuePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more GenerateQueues that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GenerateQueueFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all GenerateQueues
+     * const generateQueues = await prisma.generateQueue.findMany()
+     * 
+     * // Get first 10 GenerateQueues
+     * const generateQueues = await prisma.generateQueue.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const generateQueueWithIdOnly = await prisma.generateQueue.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends GenerateQueueFindManyArgs>(args?: SelectSubset<T, GenerateQueueFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GenerateQueuePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a GenerateQueue.
+     * @param {GenerateQueueCreateArgs} args - Arguments to create a GenerateQueue.
+     * @example
+     * // Create one GenerateQueue
+     * const GenerateQueue = await prisma.generateQueue.create({
+     *   data: {
+     *     // ... data to create a GenerateQueue
+     *   }
+     * })
+     * 
+     */
+    create<T extends GenerateQueueCreateArgs>(args: SelectSubset<T, GenerateQueueCreateArgs<ExtArgs>>): Prisma__GenerateQueueClient<$Result.GetResult<Prisma.$GenerateQueuePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many GenerateQueues.
+     * @param {GenerateQueueCreateManyArgs} args - Arguments to create many GenerateQueues.
+     * @example
+     * // Create many GenerateQueues
+     * const generateQueue = await prisma.generateQueue.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends GenerateQueueCreateManyArgs>(args?: SelectSubset<T, GenerateQueueCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many GenerateQueues and returns the data saved in the database.
+     * @param {GenerateQueueCreateManyAndReturnArgs} args - Arguments to create many GenerateQueues.
+     * @example
+     * // Create many GenerateQueues
+     * const generateQueue = await prisma.generateQueue.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many GenerateQueues and only return the `id`
+     * const generateQueueWithIdOnly = await prisma.generateQueue.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends GenerateQueueCreateManyAndReturnArgs>(args?: SelectSubset<T, GenerateQueueCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GenerateQueuePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a GenerateQueue.
+     * @param {GenerateQueueDeleteArgs} args - Arguments to delete one GenerateQueue.
+     * @example
+     * // Delete one GenerateQueue
+     * const GenerateQueue = await prisma.generateQueue.delete({
+     *   where: {
+     *     // ... filter to delete one GenerateQueue
+     *   }
+     * })
+     * 
+     */
+    delete<T extends GenerateQueueDeleteArgs>(args: SelectSubset<T, GenerateQueueDeleteArgs<ExtArgs>>): Prisma__GenerateQueueClient<$Result.GetResult<Prisma.$GenerateQueuePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one GenerateQueue.
+     * @param {GenerateQueueUpdateArgs} args - Arguments to update one GenerateQueue.
+     * @example
+     * // Update one GenerateQueue
+     * const generateQueue = await prisma.generateQueue.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends GenerateQueueUpdateArgs>(args: SelectSubset<T, GenerateQueueUpdateArgs<ExtArgs>>): Prisma__GenerateQueueClient<$Result.GetResult<Prisma.$GenerateQueuePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more GenerateQueues.
+     * @param {GenerateQueueDeleteManyArgs} args - Arguments to filter GenerateQueues to delete.
+     * @example
+     * // Delete a few GenerateQueues
+     * const { count } = await prisma.generateQueue.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends GenerateQueueDeleteManyArgs>(args?: SelectSubset<T, GenerateQueueDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more GenerateQueues.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GenerateQueueUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many GenerateQueues
+     * const generateQueue = await prisma.generateQueue.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends GenerateQueueUpdateManyArgs>(args: SelectSubset<T, GenerateQueueUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more GenerateQueues and returns the data updated in the database.
+     * @param {GenerateQueueUpdateManyAndReturnArgs} args - Arguments to update many GenerateQueues.
+     * @example
+     * // Update many GenerateQueues
+     * const generateQueue = await prisma.generateQueue.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more GenerateQueues and only return the `id`
+     * const generateQueueWithIdOnly = await prisma.generateQueue.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends GenerateQueueUpdateManyAndReturnArgs>(args: SelectSubset<T, GenerateQueueUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GenerateQueuePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one GenerateQueue.
+     * @param {GenerateQueueUpsertArgs} args - Arguments to update or create a GenerateQueue.
+     * @example
+     * // Update or create a GenerateQueue
+     * const generateQueue = await prisma.generateQueue.upsert({
+     *   create: {
+     *     // ... data to create a GenerateQueue
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the GenerateQueue we want to update
+     *   }
+     * })
+     */
+    upsert<T extends GenerateQueueUpsertArgs>(args: SelectSubset<T, GenerateQueueUpsertArgs<ExtArgs>>): Prisma__GenerateQueueClient<$Result.GetResult<Prisma.$GenerateQueuePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of GenerateQueues.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GenerateQueueCountArgs} args - Arguments to filter GenerateQueues to count.
+     * @example
+     * // Count the number of GenerateQueues
+     * const count = await prisma.generateQueue.count({
+     *   where: {
+     *     // ... the filter for the GenerateQueues we want to count
+     *   }
+     * })
+    **/
+    count<T extends GenerateQueueCountArgs>(
+      args?: Subset<T, GenerateQueueCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], GenerateQueueCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a GenerateQueue.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GenerateQueueAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends GenerateQueueAggregateArgs>(args: Subset<T, GenerateQueueAggregateArgs>): Prisma.PrismaPromise<GetGenerateQueueAggregateType<T>>
+
+    /**
+     * Group by GenerateQueue.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GenerateQueueGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends GenerateQueueGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: GenerateQueueGroupByArgs['orderBy'] }
+        : { orderBy?: GenerateQueueGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, GenerateQueueGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGenerateQueueGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the GenerateQueue model
+   */
+  readonly fields: GenerateQueueFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for GenerateQueue.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__GenerateQueueClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the GenerateQueue model
+   */
+  interface GenerateQueueFieldRefs {
+    readonly id: FieldRef<"GenerateQueue", 'Int'>
+    readonly file: FieldRef<"GenerateQueue", 'Bytes'>
+    readonly fileType: FieldRef<"GenerateQueue", 'String'>
+    readonly userId: FieldRef<"GenerateQueue", 'Int'>
+    readonly createdAt: FieldRef<"GenerateQueue", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * GenerateQueue findUnique
+   */
+  export type GenerateQueueFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateQueue
+     */
+    select?: GenerateQueueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateQueue
+     */
+    omit?: GenerateQueueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateQueueInclude<ExtArgs> | null
+    /**
+     * Filter, which GenerateQueue to fetch.
+     */
+    where: GenerateQueueWhereUniqueInput
+  }
+
+  /**
+   * GenerateQueue findUniqueOrThrow
+   */
+  export type GenerateQueueFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateQueue
+     */
+    select?: GenerateQueueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateQueue
+     */
+    omit?: GenerateQueueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateQueueInclude<ExtArgs> | null
+    /**
+     * Filter, which GenerateQueue to fetch.
+     */
+    where: GenerateQueueWhereUniqueInput
+  }
+
+  /**
+   * GenerateQueue findFirst
+   */
+  export type GenerateQueueFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateQueue
+     */
+    select?: GenerateQueueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateQueue
+     */
+    omit?: GenerateQueueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateQueueInclude<ExtArgs> | null
+    /**
+     * Filter, which GenerateQueue to fetch.
+     */
+    where?: GenerateQueueWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GenerateQueues to fetch.
+     */
+    orderBy?: GenerateQueueOrderByWithRelationInput | GenerateQueueOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GenerateQueues.
+     */
+    cursor?: GenerateQueueWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GenerateQueues from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GenerateQueues.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GenerateQueues.
+     */
+    distinct?: GenerateQueueScalarFieldEnum | GenerateQueueScalarFieldEnum[]
+  }
+
+  /**
+   * GenerateQueue findFirstOrThrow
+   */
+  export type GenerateQueueFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateQueue
+     */
+    select?: GenerateQueueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateQueue
+     */
+    omit?: GenerateQueueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateQueueInclude<ExtArgs> | null
+    /**
+     * Filter, which GenerateQueue to fetch.
+     */
+    where?: GenerateQueueWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GenerateQueues to fetch.
+     */
+    orderBy?: GenerateQueueOrderByWithRelationInput | GenerateQueueOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GenerateQueues.
+     */
+    cursor?: GenerateQueueWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GenerateQueues from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GenerateQueues.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GenerateQueues.
+     */
+    distinct?: GenerateQueueScalarFieldEnum | GenerateQueueScalarFieldEnum[]
+  }
+
+  /**
+   * GenerateQueue findMany
+   */
+  export type GenerateQueueFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateQueue
+     */
+    select?: GenerateQueueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateQueue
+     */
+    omit?: GenerateQueueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateQueueInclude<ExtArgs> | null
+    /**
+     * Filter, which GenerateQueues to fetch.
+     */
+    where?: GenerateQueueWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GenerateQueues to fetch.
+     */
+    orderBy?: GenerateQueueOrderByWithRelationInput | GenerateQueueOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing GenerateQueues.
+     */
+    cursor?: GenerateQueueWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GenerateQueues from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GenerateQueues.
+     */
+    skip?: number
+    distinct?: GenerateQueueScalarFieldEnum | GenerateQueueScalarFieldEnum[]
+  }
+
+  /**
+   * GenerateQueue create
+   */
+  export type GenerateQueueCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateQueue
+     */
+    select?: GenerateQueueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateQueue
+     */
+    omit?: GenerateQueueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateQueueInclude<ExtArgs> | null
+    /**
+     * The data needed to create a GenerateQueue.
+     */
+    data: XOR<GenerateQueueCreateInput, GenerateQueueUncheckedCreateInput>
+  }
+
+  /**
+   * GenerateQueue createMany
+   */
+  export type GenerateQueueCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many GenerateQueues.
+     */
+    data: GenerateQueueCreateManyInput | GenerateQueueCreateManyInput[]
+  }
+
+  /**
+   * GenerateQueue createManyAndReturn
+   */
+  export type GenerateQueueCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateQueue
+     */
+    select?: GenerateQueueSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateQueue
+     */
+    omit?: GenerateQueueOmit<ExtArgs> | null
+    /**
+     * The data used to create many GenerateQueues.
+     */
+    data: GenerateQueueCreateManyInput | GenerateQueueCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateQueueIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * GenerateQueue update
+   */
+  export type GenerateQueueUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateQueue
+     */
+    select?: GenerateQueueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateQueue
+     */
+    omit?: GenerateQueueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateQueueInclude<ExtArgs> | null
+    /**
+     * The data needed to update a GenerateQueue.
+     */
+    data: XOR<GenerateQueueUpdateInput, GenerateQueueUncheckedUpdateInput>
+    /**
+     * Choose, which GenerateQueue to update.
+     */
+    where: GenerateQueueWhereUniqueInput
+  }
+
+  /**
+   * GenerateQueue updateMany
+   */
+  export type GenerateQueueUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update GenerateQueues.
+     */
+    data: XOR<GenerateQueueUpdateManyMutationInput, GenerateQueueUncheckedUpdateManyInput>
+    /**
+     * Filter which GenerateQueues to update
+     */
+    where?: GenerateQueueWhereInput
+    /**
+     * Limit how many GenerateQueues to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * GenerateQueue updateManyAndReturn
+   */
+  export type GenerateQueueUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateQueue
+     */
+    select?: GenerateQueueSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateQueue
+     */
+    omit?: GenerateQueueOmit<ExtArgs> | null
+    /**
+     * The data used to update GenerateQueues.
+     */
+    data: XOR<GenerateQueueUpdateManyMutationInput, GenerateQueueUncheckedUpdateManyInput>
+    /**
+     * Filter which GenerateQueues to update
+     */
+    where?: GenerateQueueWhereInput
+    /**
+     * Limit how many GenerateQueues to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateQueueIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * GenerateQueue upsert
+   */
+  export type GenerateQueueUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateQueue
+     */
+    select?: GenerateQueueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateQueue
+     */
+    omit?: GenerateQueueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateQueueInclude<ExtArgs> | null
+    /**
+     * The filter to search for the GenerateQueue to update in case it exists.
+     */
+    where: GenerateQueueWhereUniqueInput
+    /**
+     * In case the GenerateQueue found by the `where` argument doesn't exist, create a new GenerateQueue with this data.
+     */
+    create: XOR<GenerateQueueCreateInput, GenerateQueueUncheckedCreateInput>
+    /**
+     * In case the GenerateQueue was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<GenerateQueueUpdateInput, GenerateQueueUncheckedUpdateInput>
+  }
+
+  /**
+   * GenerateQueue delete
+   */
+  export type GenerateQueueDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateQueue
+     */
+    select?: GenerateQueueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateQueue
+     */
+    omit?: GenerateQueueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateQueueInclude<ExtArgs> | null
+    /**
+     * Filter which GenerateQueue to delete.
+     */
+    where: GenerateQueueWhereUniqueInput
+  }
+
+  /**
+   * GenerateQueue deleteMany
+   */
+  export type GenerateQueueDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GenerateQueues to delete
+     */
+    where?: GenerateQueueWhereInput
+    /**
+     * Limit how many GenerateQueues to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * GenerateQueue without action
+   */
+  export type GenerateQueueDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenerateQueue
+     */
+    select?: GenerateQueueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GenerateQueue
+     */
+    omit?: GenerateQueueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GenerateQueueInclude<ExtArgs> | null
   }
 
 
@@ -3218,6 +4440,17 @@ export namespace Prisma {
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
+  export const GenerateQueueScalarFieldEnum: {
+    id: 'id',
+    file: 'file',
+    fileType: 'fileType',
+    userId: 'userId',
+    createdAt: 'createdAt'
+  };
+
+  export type GenerateQueueScalarFieldEnum = (typeof GenerateQueueScalarFieldEnum)[keyof typeof GenerateQueueScalarFieldEnum]
+
+
   export const GeneratedModelScalarFieldEnum: {
     id: 'id',
     name: 'name',
@@ -3273,6 +4506,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Bytes'
+   */
+  export type BytesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Bytes'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -3291,6 +4531,7 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     generatedModels?: GeneratedModelListRelationFilter
+    generateQueue?: GenerateQueueListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -3299,6 +4540,7 @@ export namespace Prisma {
     password?: SortOrder
     createdAt?: SortOrder
     generatedModels?: GeneratedModelOrderByRelationAggregateInput
+    generateQueue?: GenerateQueueOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -3310,6 +4552,7 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     generatedModels?: GeneratedModelListRelationFilter
+    generateQueue?: GenerateQueueListRelationFilter
   }, "id" | "login">
 
   export type UserOrderByWithAggregationInput = {
@@ -3332,6 +4575,63 @@ export namespace Prisma {
     login?: StringWithAggregatesFilter<"User"> | string
     password?: StringWithAggregatesFilter<"User"> | string
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+  }
+
+  export type GenerateQueueWhereInput = {
+    AND?: GenerateQueueWhereInput | GenerateQueueWhereInput[]
+    OR?: GenerateQueueWhereInput[]
+    NOT?: GenerateQueueWhereInput | GenerateQueueWhereInput[]
+    id?: IntFilter<"GenerateQueue"> | number
+    file?: BytesFilter<"GenerateQueue"> | Bytes
+    fileType?: StringFilter<"GenerateQueue"> | string
+    userId?: IntFilter<"GenerateQueue"> | number
+    createdAt?: DateTimeFilter<"GenerateQueue"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type GenerateQueueOrderByWithRelationInput = {
+    id?: SortOrder
+    file?: SortOrder
+    fileType?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type GenerateQueueWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: GenerateQueueWhereInput | GenerateQueueWhereInput[]
+    OR?: GenerateQueueWhereInput[]
+    NOT?: GenerateQueueWhereInput | GenerateQueueWhereInput[]
+    file?: BytesFilter<"GenerateQueue"> | Bytes
+    fileType?: StringFilter<"GenerateQueue"> | string
+    userId?: IntFilter<"GenerateQueue"> | number
+    createdAt?: DateTimeFilter<"GenerateQueue"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type GenerateQueueOrderByWithAggregationInput = {
+    id?: SortOrder
+    file?: SortOrder
+    fileType?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    _count?: GenerateQueueCountOrderByAggregateInput
+    _avg?: GenerateQueueAvgOrderByAggregateInput
+    _max?: GenerateQueueMaxOrderByAggregateInput
+    _min?: GenerateQueueMinOrderByAggregateInput
+    _sum?: GenerateQueueSumOrderByAggregateInput
+  }
+
+  export type GenerateQueueScalarWhereWithAggregatesInput = {
+    AND?: GenerateQueueScalarWhereWithAggregatesInput | GenerateQueueScalarWhereWithAggregatesInput[]
+    OR?: GenerateQueueScalarWhereWithAggregatesInput[]
+    NOT?: GenerateQueueScalarWhereWithAggregatesInput | GenerateQueueScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"GenerateQueue"> | number
+    file?: BytesWithAggregatesFilter<"GenerateQueue"> | Bytes
+    fileType?: StringWithAggregatesFilter<"GenerateQueue"> | string
+    userId?: IntWithAggregatesFilter<"GenerateQueue"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"GenerateQueue"> | Date | string
   }
 
   export type GeneratedModelWhereInput = {
@@ -3401,6 +4701,7 @@ export namespace Prisma {
     password: string
     createdAt?: Date | string
     generatedModels?: GeneratedModelCreateNestedManyWithoutUserInput
+    generateQueue?: GenerateQueueCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -3409,6 +4710,7 @@ export namespace Prisma {
     password: string
     createdAt?: Date | string
     generatedModels?: GeneratedModelUncheckedCreateNestedManyWithoutUserInput
+    generateQueue?: GenerateQueueUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -3416,6 +4718,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     generatedModels?: GeneratedModelUpdateManyWithoutUserNestedInput
+    generateQueue?: GenerateQueueUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -3424,6 +4727,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     generatedModels?: GeneratedModelUncheckedUpdateManyWithoutUserNestedInput
+    generateQueue?: GenerateQueueUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -3443,6 +4747,58 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     login?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GenerateQueueCreateInput = {
+    file: Bytes
+    fileType: string
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutGenerateQueueInput
+  }
+
+  export type GenerateQueueUncheckedCreateInput = {
+    id?: number
+    file: Bytes
+    fileType: string
+    userId: number
+    createdAt?: Date | string
+  }
+
+  export type GenerateQueueUpdateInput = {
+    file?: BytesFieldUpdateOperationsInput | Bytes
+    fileType?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutGenerateQueueNestedInput
+  }
+
+  export type GenerateQueueUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    file?: BytesFieldUpdateOperationsInput | Bytes
+    fileType?: StringFieldUpdateOperationsInput | string
+    userId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GenerateQueueCreateManyInput = {
+    id?: number
+    file: Bytes
+    fileType: string
+    userId: number
+    createdAt?: Date | string
+  }
+
+  export type GenerateQueueUpdateManyMutationInput = {
+    file?: BytesFieldUpdateOperationsInput | Bytes
+    fileType?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GenerateQueueUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    file?: BytesFieldUpdateOperationsInput | Bytes
+    fileType?: StringFieldUpdateOperationsInput | string
+    userId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -3547,7 +4903,17 @@ export namespace Prisma {
     none?: GeneratedModelWhereInput
   }
 
+  export type GenerateQueueListRelationFilter = {
+    every?: GenerateQueueWhereInput
+    some?: GenerateQueueWhereInput
+    none?: GenerateQueueWhereInput
+  }
+
   export type GeneratedModelOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type GenerateQueueOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -3625,6 +4991,62 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type BytesFilter<$PrismaModel = never> = {
+    equals?: Bytes | BytesFieldRefInput<$PrismaModel>
+    in?: Bytes[]
+    notIn?: Bytes[]
+    not?: NestedBytesFilter<$PrismaModel> | Bytes
+  }
+
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
+  export type GenerateQueueCountOrderByAggregateInput = {
+    id?: SortOrder
+    file?: SortOrder
+    fileType?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type GenerateQueueAvgOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type GenerateQueueMaxOrderByAggregateInput = {
+    id?: SortOrder
+    file?: SortOrder
+    fileType?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type GenerateQueueMinOrderByAggregateInput = {
+    id?: SortOrder
+    file?: SortOrder
+    fileType?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type GenerateQueueSumOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type BytesWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Bytes | BytesFieldRefInput<$PrismaModel>
+    in?: Bytes[]
+    notIn?: Bytes[]
+    not?: NestedBytesWithAggregatesFilter<$PrismaModel> | Bytes
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBytesFilter<$PrismaModel>
+    _max?: NestedBytesFilter<$PrismaModel>
   }
 
   export type IntNullableFilter<$PrismaModel = never> = {
@@ -3708,11 +5130,25 @@ export namespace Prisma {
     connect?: GeneratedModelWhereUniqueInput | GeneratedModelWhereUniqueInput[]
   }
 
+  export type GenerateQueueCreateNestedManyWithoutUserInput = {
+    create?: XOR<GenerateQueueCreateWithoutUserInput, GenerateQueueUncheckedCreateWithoutUserInput> | GenerateQueueCreateWithoutUserInput[] | GenerateQueueUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GenerateQueueCreateOrConnectWithoutUserInput | GenerateQueueCreateOrConnectWithoutUserInput[]
+    createMany?: GenerateQueueCreateManyUserInputEnvelope
+    connect?: GenerateQueueWhereUniqueInput | GenerateQueueWhereUniqueInput[]
+  }
+
   export type GeneratedModelUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<GeneratedModelCreateWithoutUserInput, GeneratedModelUncheckedCreateWithoutUserInput> | GeneratedModelCreateWithoutUserInput[] | GeneratedModelUncheckedCreateWithoutUserInput[]
     connectOrCreate?: GeneratedModelCreateOrConnectWithoutUserInput | GeneratedModelCreateOrConnectWithoutUserInput[]
     createMany?: GeneratedModelCreateManyUserInputEnvelope
     connect?: GeneratedModelWhereUniqueInput | GeneratedModelWhereUniqueInput[]
+  }
+
+  export type GenerateQueueUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<GenerateQueueCreateWithoutUserInput, GenerateQueueUncheckedCreateWithoutUserInput> | GenerateQueueCreateWithoutUserInput[] | GenerateQueueUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GenerateQueueCreateOrConnectWithoutUserInput | GenerateQueueCreateOrConnectWithoutUserInput[]
+    createMany?: GenerateQueueCreateManyUserInputEnvelope
+    connect?: GenerateQueueWhereUniqueInput | GenerateQueueWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -3737,6 +5173,20 @@ export namespace Prisma {
     deleteMany?: GeneratedModelScalarWhereInput | GeneratedModelScalarWhereInput[]
   }
 
+  export type GenerateQueueUpdateManyWithoutUserNestedInput = {
+    create?: XOR<GenerateQueueCreateWithoutUserInput, GenerateQueueUncheckedCreateWithoutUserInput> | GenerateQueueCreateWithoutUserInput[] | GenerateQueueUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GenerateQueueCreateOrConnectWithoutUserInput | GenerateQueueCreateOrConnectWithoutUserInput[]
+    upsert?: GenerateQueueUpsertWithWhereUniqueWithoutUserInput | GenerateQueueUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: GenerateQueueCreateManyUserInputEnvelope
+    set?: GenerateQueueWhereUniqueInput | GenerateQueueWhereUniqueInput[]
+    disconnect?: GenerateQueueWhereUniqueInput | GenerateQueueWhereUniqueInput[]
+    delete?: GenerateQueueWhereUniqueInput | GenerateQueueWhereUniqueInput[]
+    connect?: GenerateQueueWhereUniqueInput | GenerateQueueWhereUniqueInput[]
+    update?: GenerateQueueUpdateWithWhereUniqueWithoutUserInput | GenerateQueueUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: GenerateQueueUpdateManyWithWhereWithoutUserInput | GenerateQueueUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: GenerateQueueScalarWhereInput | GenerateQueueScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -3757,6 +5207,38 @@ export namespace Prisma {
     update?: GeneratedModelUpdateWithWhereUniqueWithoutUserInput | GeneratedModelUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: GeneratedModelUpdateManyWithWhereWithoutUserInput | GeneratedModelUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: GeneratedModelScalarWhereInput | GeneratedModelScalarWhereInput[]
+  }
+
+  export type GenerateQueueUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<GenerateQueueCreateWithoutUserInput, GenerateQueueUncheckedCreateWithoutUserInput> | GenerateQueueCreateWithoutUserInput[] | GenerateQueueUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GenerateQueueCreateOrConnectWithoutUserInput | GenerateQueueCreateOrConnectWithoutUserInput[]
+    upsert?: GenerateQueueUpsertWithWhereUniqueWithoutUserInput | GenerateQueueUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: GenerateQueueCreateManyUserInputEnvelope
+    set?: GenerateQueueWhereUniqueInput | GenerateQueueWhereUniqueInput[]
+    disconnect?: GenerateQueueWhereUniqueInput | GenerateQueueWhereUniqueInput[]
+    delete?: GenerateQueueWhereUniqueInput | GenerateQueueWhereUniqueInput[]
+    connect?: GenerateQueueWhereUniqueInput | GenerateQueueWhereUniqueInput[]
+    update?: GenerateQueueUpdateWithWhereUniqueWithoutUserInput | GenerateQueueUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: GenerateQueueUpdateManyWithWhereWithoutUserInput | GenerateQueueUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: GenerateQueueScalarWhereInput | GenerateQueueScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutGenerateQueueInput = {
+    create?: XOR<UserCreateWithoutGenerateQueueInput, UserUncheckedCreateWithoutGenerateQueueInput>
+    connectOrCreate?: UserCreateOrConnectWithoutGenerateQueueInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type BytesFieldUpdateOperationsInput = {
+    set?: Bytes
+  }
+
+  export type UserUpdateOneRequiredWithoutGenerateQueueNestedInput = {
+    create?: XOR<UserCreateWithoutGenerateQueueInput, UserUncheckedCreateWithoutGenerateQueueInput>
+    connectOrCreate?: UserCreateOrConnectWithoutGenerateQueueInput
+    upsert?: UserUpsertWithoutGenerateQueueInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutGenerateQueueInput, UserUpdateWithoutGenerateQueueInput>, UserUncheckedUpdateWithoutGenerateQueueInput>
   }
 
   export type UserCreateNestedOneWithoutGeneratedModelsInput = {
@@ -3877,6 +5359,23 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedBytesFilter<$PrismaModel = never> = {
+    equals?: Bytes | BytesFieldRefInput<$PrismaModel>
+    in?: Bytes[]
+    notIn?: Bytes[]
+    not?: NestedBytesFilter<$PrismaModel> | Bytes
+  }
+
+  export type NestedBytesWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Bytes | BytesFieldRefInput<$PrismaModel>
+    in?: Bytes[]
+    notIn?: Bytes[]
+    not?: NestedBytesWithAggregatesFilter<$PrismaModel> | Bytes
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBytesFilter<$PrismaModel>
+    _max?: NestedBytesFilter<$PrismaModel>
+  }
+
   export type NestedIntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | null
@@ -3939,6 +5438,28 @@ export namespace Prisma {
     data: GeneratedModelCreateManyUserInput | GeneratedModelCreateManyUserInput[]
   }
 
+  export type GenerateQueueCreateWithoutUserInput = {
+    file: Bytes
+    fileType: string
+    createdAt?: Date | string
+  }
+
+  export type GenerateQueueUncheckedCreateWithoutUserInput = {
+    id?: number
+    file: Bytes
+    fileType: string
+    createdAt?: Date | string
+  }
+
+  export type GenerateQueueCreateOrConnectWithoutUserInput = {
+    where: GenerateQueueWhereUniqueInput
+    create: XOR<GenerateQueueCreateWithoutUserInput, GenerateQueueUncheckedCreateWithoutUserInput>
+  }
+
+  export type GenerateQueueCreateManyUserInputEnvelope = {
+    data: GenerateQueueCreateManyUserInput | GenerateQueueCreateManyUserInput[]
+  }
+
   export type GeneratedModelUpsertWithWhereUniqueWithoutUserInput = {
     where: GeneratedModelWhereUniqueInput
     update: XOR<GeneratedModelUpdateWithoutUserInput, GeneratedModelUncheckedUpdateWithoutUserInput>
@@ -3967,10 +5488,84 @@ export namespace Prisma {
     userId?: IntNullableFilter<"GeneratedModel"> | number | null
   }
 
+  export type GenerateQueueUpsertWithWhereUniqueWithoutUserInput = {
+    where: GenerateQueueWhereUniqueInput
+    update: XOR<GenerateQueueUpdateWithoutUserInput, GenerateQueueUncheckedUpdateWithoutUserInput>
+    create: XOR<GenerateQueueCreateWithoutUserInput, GenerateQueueUncheckedCreateWithoutUserInput>
+  }
+
+  export type GenerateQueueUpdateWithWhereUniqueWithoutUserInput = {
+    where: GenerateQueueWhereUniqueInput
+    data: XOR<GenerateQueueUpdateWithoutUserInput, GenerateQueueUncheckedUpdateWithoutUserInput>
+  }
+
+  export type GenerateQueueUpdateManyWithWhereWithoutUserInput = {
+    where: GenerateQueueScalarWhereInput
+    data: XOR<GenerateQueueUpdateManyMutationInput, GenerateQueueUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type GenerateQueueScalarWhereInput = {
+    AND?: GenerateQueueScalarWhereInput | GenerateQueueScalarWhereInput[]
+    OR?: GenerateQueueScalarWhereInput[]
+    NOT?: GenerateQueueScalarWhereInput | GenerateQueueScalarWhereInput[]
+    id?: IntFilter<"GenerateQueue"> | number
+    file?: BytesFilter<"GenerateQueue"> | Bytes
+    fileType?: StringFilter<"GenerateQueue"> | string
+    userId?: IntFilter<"GenerateQueue"> | number
+    createdAt?: DateTimeFilter<"GenerateQueue"> | Date | string
+  }
+
+  export type UserCreateWithoutGenerateQueueInput = {
+    login: string
+    password: string
+    createdAt?: Date | string
+    generatedModels?: GeneratedModelCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutGenerateQueueInput = {
+    id?: number
+    login: string
+    password: string
+    createdAt?: Date | string
+    generatedModels?: GeneratedModelUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutGenerateQueueInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutGenerateQueueInput, UserUncheckedCreateWithoutGenerateQueueInput>
+  }
+
+  export type UserUpsertWithoutGenerateQueueInput = {
+    update: XOR<UserUpdateWithoutGenerateQueueInput, UserUncheckedUpdateWithoutGenerateQueueInput>
+    create: XOR<UserCreateWithoutGenerateQueueInput, UserUncheckedCreateWithoutGenerateQueueInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutGenerateQueueInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutGenerateQueueInput, UserUncheckedUpdateWithoutGenerateQueueInput>
+  }
+
+  export type UserUpdateWithoutGenerateQueueInput = {
+    login?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    generatedModels?: GeneratedModelUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutGenerateQueueInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    login?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    generatedModels?: GeneratedModelUncheckedUpdateManyWithoutUserNestedInput
+  }
+
   export type UserCreateWithoutGeneratedModelsInput = {
     login: string
     password: string
     createdAt?: Date | string
+    generateQueue?: GenerateQueueCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutGeneratedModelsInput = {
@@ -3978,6 +5573,7 @@ export namespace Prisma {
     login: string
     password: string
     createdAt?: Date | string
+    generateQueue?: GenerateQueueUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutGeneratedModelsInput = {
@@ -4000,6 +5596,7 @@ export namespace Prisma {
     login?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    generateQueue?: GenerateQueueUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutGeneratedModelsInput = {
@@ -4007,6 +5604,7 @@ export namespace Prisma {
     login?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    generateQueue?: GenerateQueueUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type GeneratedModelCreateManyUserInput = {
@@ -4014,6 +5612,13 @@ export namespace Prisma {
     name: string
     fileUrl: string
     imageUrl: string
+    createdAt?: Date | string
+  }
+
+  export type GenerateQueueCreateManyUserInput = {
+    id?: number
+    file: Bytes
+    fileType: string
     createdAt?: Date | string
   }
 
@@ -4037,6 +5642,26 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     fileUrl?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GenerateQueueUpdateWithoutUserInput = {
+    file?: BytesFieldUpdateOperationsInput | Bytes
+    fileType?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GenerateQueueUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    file?: BytesFieldUpdateOperationsInput | Bytes
+    fileType?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GenerateQueueUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    file?: BytesFieldUpdateOperationsInput | Bytes
+    fileType?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

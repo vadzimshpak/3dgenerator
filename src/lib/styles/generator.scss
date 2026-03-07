@@ -25,6 +25,29 @@
   margin: 0 0 $space-lg;
 }
 
+.generator__dropzone-input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.generator__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 480px;
+}
+
+.generator__error {
+  color: $color-cherry;
+  font-size: 0.875rem;
+  margin: 0 0 $space-md;
+  width: 100%;
+}
+
 .generator__dropzone {
   @include glass;
   @include slide-up(0.5s, 0.15s);
@@ -38,6 +61,8 @@
   cursor: pointer;
   transition: border-color 0.2s, background 0.2s;
   margin-bottom: $space-md;
+  overflow: hidden;
+  position: relative;
 
   &:hover {
     border-color: rgba(255, 255, 255, 0.12);
@@ -48,6 +73,15 @@
 .generator__dropzone-text {
   color: $color-text-muted;
   font-size: 1rem;
+}
+
+.generator__dropzone-preview {
+  display: block;
+  position: absolute;
+  inset: 0;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .generator__btn {

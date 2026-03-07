@@ -97,6 +97,14 @@ exports.Prisma.UserScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.GenerateQueueScalarFieldEnum = {
+  id: 'id',
+  file: 'file',
+  fileType: 'fileType',
+  userId: 'userId',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.GeneratedModelScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -119,6 +127,7 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   User: 'User',
+  GenerateQueue: 'GenerateQueue',
   GeneratedModel: 'GeneratedModel'
 };
 /**
@@ -169,13 +178,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// https://pris.ly/d/prisma-schema-reference\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/lib/prisma\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id              Int              @id @default(autoincrement())\n  login           String           @unique\n  password        String\n  createdAt       DateTime         @default(now())\n  generatedModels GeneratedModel[]\n}\n\nmodel GeneratedModel {\n  id        Int      @id @default(autoincrement())\n  name      String\n  fileUrl   String\n  imageUrl  String\n  createdAt DateTime @default(now())\n  userId    Int?\n  user      User?    @relation(fields: [userId], references: [id])\n}\n",
-  "inlineSchemaHash": "65f45e9be26c6e1004fffcd22fedf984d2b3fac6fb5fc573ffea5095a193ed9c",
+  "inlineSchema": "// https://pris.ly/d/prisma-schema-reference\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/lib/prisma\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id              Int              @id @default(autoincrement())\n  login           String           @unique\n  password        String\n  createdAt       DateTime         @default(now())\n  generatedModels GeneratedModel[]\n  generateQueue   GenerateQueue[]\n}\n\nmodel GenerateQueue {\n  id        Int      @id @default(autoincrement())\n  file      Bytes\n  fileType  String\n  userId    Int\n  user      User     @relation(fields: [userId], references: [id])\n  createdAt DateTime @default(now())\n}\n\nmodel GeneratedModel {\n  id        Int      @id @default(autoincrement())\n  name      String\n  fileUrl   String\n  imageUrl  String\n  createdAt DateTime @default(now())\n  userId    Int?\n  user      User?    @relation(fields: [userId], references: [id])\n}\n",
+  "inlineSchemaHash": "1e02c27a9e105c42d222dd51c5fbc08277dbdabce0d4f263c24f9432655ad5e5",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"login\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"generatedModels\",\"kind\":\"object\",\"type\":\"GeneratedModel\",\"relationName\":\"GeneratedModelToUser\"}],\"dbName\":null},\"GeneratedModel\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"fileUrl\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"imageUrl\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"GeneratedModelToUser\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"login\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"generatedModels\",\"kind\":\"object\",\"type\":\"GeneratedModel\",\"relationName\":\"GeneratedModelToUser\"},{\"name\":\"generateQueue\",\"kind\":\"object\",\"type\":\"GenerateQueue\",\"relationName\":\"GenerateQueueToUser\"}],\"dbName\":null},\"GenerateQueue\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"file\",\"kind\":\"scalar\",\"type\":\"Bytes\"},{\"name\":\"fileType\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"GenerateQueueToUser\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"GeneratedModel\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"fileUrl\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"imageUrl\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"GeneratedModelToUser\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),

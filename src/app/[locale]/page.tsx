@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { prisma } from "@/lib/db";
+import { GenerateForm } from "./GenerateForm";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -18,12 +19,10 @@ export default async function Home({ params }: Props) {
       <section className="generator">
         <h1 className="generator__title">{t("title")}</h1>
         <p className="generator__subtitle">{t("subtitle")}</p>
-        <div className="generator__dropzone" role="button" tabIndex={0}>
-          <span className="generator__dropzone-text">{t("selectImage")}</span>
-        </div>
-        <button type="button" className="generator__btn">
-          {t("generate")}
-        </button>
+        <GenerateForm
+          selectImageText={t("selectImage")}
+          generateText={t("generate")}
+        />
       </section>
 
       <section className="assets">
