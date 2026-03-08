@@ -24,9 +24,12 @@ export default async function Home({ params }: Props) {
   }
 
   const t = await getTranslations("home");
-  const models = await prisma.generatedModel.findMany({
-    orderBy: { createdAt: "desc" },
-  });
+  const [models, usersCount, queueActiveCount, modelsCount] = await Promise.all([
+    prisma.generatedModel.findMany({ orderBy: { createdAt: "desc" } }),
+    prisma.user.count(),
+    prisma.generateQueue.count({ where: { status: { in: [0, 1] } } }),
+    prisma.generatedModel.count(),
+  ]);
 
   return (
     <>
@@ -37,6 +40,20 @@ export default async function Home({ params }: Props) {
           selectImageText={t("selectImage")}
           generateText={t("generate")}
         />
+        <div className="generator-stats">
+          <div className="generator-stats__item">
+            <span className="generator-stats__value">{usersCount}</span>
+            <span className="generator-stats__label">{t("statsUsers")}</span>
+          </div>
+          <div className="generator-stats__item">
+            <span className="generator-stats__value">{queueActiveCount}</span>
+            <span className="generator-stats__label">{t("statsQueue")}</span>
+          </div>
+          <div className="generator-stats__item">
+            <span className="generator-stats__value">{modelsCount}</span>
+            <span className="generator-stats__label">{t("statsModels")}</span>
+          </div>
+        </div>
       </section>
 
       <AssetsSection title={t("assets")} models={models} />

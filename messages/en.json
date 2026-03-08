@@ -15,7 +15,10 @@
     "generate": "Generate",
     "assets": "Assets",
     "errorNoFile": "Please select an image first",
-    "errorNotImage": "File must be an image"
+    "errorNotImage": "File must be an image",
+    "statsUsers": "users registered",
+    "statsQueue": "active in queue",
+    "statsModels": "models generated"
   },
   "queue": {
     "title": "Order",
