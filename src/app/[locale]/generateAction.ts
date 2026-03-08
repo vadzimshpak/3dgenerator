@@ -5,6 +5,8 @@ import { redirect } from "@/i18n/navigation";
 import { getSession } from "@/lib/session";
 import { prisma } from "@/lib/db";
 
+const MAX_IMAGE_SIZE_BYTES = 5 * 1024 * 1024; // 5 MB
+
 export type GenerateState = { error?: string };
 
 export async function generateAction(
@@ -25,6 +27,10 @@ export async function generateAction(
 
   if (!file.type.startsWith("image/")) {
     return { error: "errorNotImage" };
+  }
+
+  if (file.size > MAX_IMAGE_SIZE_BYTES) {
+    return { error: "errorFileTooLarge" };
   }
 
   const arrayBuffer = await file.arrayBuffer();

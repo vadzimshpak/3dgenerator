@@ -16,6 +16,7 @@
     "assets": "Assets",
     "errorNoFile": "Please select an image first",
     "errorNotImage": "File must be an image",
+    "errorFileTooLarge": "Image size must not exceed 5 MB",
     "statsUsers": "users registered",
     "statsQueue": "active in queue",
     "statsModels": "models generated"

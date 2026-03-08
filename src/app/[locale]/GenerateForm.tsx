@@ -25,7 +25,7 @@ export function GenerateForm({ selectImageText, generateText }: GenerateFormProp
       <ImageDropzone selectImageText={selectImageText} />
       {state?.error && (
         <p className="generator__error" role="alert">
-          {t(state.error as "errorNoFile" | "errorNotImage")}
+          {t(state.error as "errorNoFile" | "errorNotImage" | "errorFileTooLarge")}
         </p>
       )}
       <button type="submit" className="generator__btn">
