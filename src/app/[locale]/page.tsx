@@ -25,7 +25,11 @@ export default async function Home({ params }: Props) {
 
   const t = await getTranslations("home");
   const [models, usersCount, queueActiveCount, modelsCount] = await Promise.all([
-    prisma.generatedModel.findMany({ orderBy: { createdAt: "desc" } }),
+    prisma.generatedModel.findMany({
+      select: { id: true, name: true, fileUrl: true },
+      orderBy: { createdAt: "desc" },
+      take: 20,
+    }),
     prisma.user.count(),
     prisma.generateQueue.count({ where: { status: { in: [0, 1] } } }),
     prisma.generatedModel.count(),

@@ -38,10 +38,28 @@
 .asset-detail__preview {
   aspect-ratio: 16 / 10;
   border-radius: $radius-sm;
-  background-size: cover;
+  overflow: hidden;
+  position: relative;
+  @include glass($blur: 10px, $bg: rgba(30, 30, 30, 0.45), $border: rgba(255, 255, 255, 0.06));
+  margin-bottom: $space-lg;
+}
+
+.asset-detail__preview--fit {
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  margin-bottom: $space-lg;
+}
+
+.model-viewer {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: radial-gradient(120% 120% at 50% 30%, rgba(185, 28, 60, 0.12), transparent 60%),
+    radial-gradient(120% 120% at 50% 70%, rgba(255, 255, 255, 0.06), transparent 55%);
+}
+
+.model-viewer--static {
+  pointer-events: none;
 }
 
 .asset-detail__meta {
@@ -72,4 +90,9 @@
   &:hover {
     text-decoration: underline;
   }
+}
+
+.asset-detail__meta-desc--error {
+  color: $color-cherry;
+  word-break: break-word;
 }

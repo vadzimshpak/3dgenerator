@@ -30,6 +30,7 @@
     "status0": "In queue for processing",
     "status1": "Processing",
     "status2": "Ready",
+    "error": "Error",
     "downloadModel": "Download model",
     "downloadModelLink": "Download model file"
   },

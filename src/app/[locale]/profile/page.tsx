@@ -20,7 +20,9 @@ export default async function ProfilePage({ params }: Props) {
   const t = await getTranslations("profile");
   const models = await prisma.generatedModel.findMany({
     where: { userId: session.id },
+    select: { id: true, name: true, fileUrl: true },
     orderBy: { createdAt: "desc" },
+    take: 20,
   });
 
   return (

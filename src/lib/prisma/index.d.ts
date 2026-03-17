@@ -2229,6 +2229,7 @@ export namespace Prisma {
     fileType: string | null
     status: number | null
     resultFileUrl: string | null
+    error: string | null
     userId: number | null
     createdAt: Date | null
   }
@@ -2239,6 +2240,7 @@ export namespace Prisma {
     fileType: string | null
     status: number | null
     resultFileUrl: string | null
+    error: string | null
     userId: number | null
     createdAt: Date | null
   }
@@ -2249,6 +2251,7 @@ export namespace Prisma {
     fileType: number
     status: number
     resultFileUrl: number
+    error: number
     userId: number
     createdAt: number
     _all: number
@@ -2273,6 +2276,7 @@ export namespace Prisma {
     fileType?: true
     status?: true
     resultFileUrl?: true
+    error?: true
     userId?: true
     createdAt?: true
   }
@@ -2283,6 +2287,7 @@ export namespace Prisma {
     fileType?: true
     status?: true
     resultFileUrl?: true
+    error?: true
     userId?: true
     createdAt?: true
   }
@@ -2293,6 +2298,7 @@ export namespace Prisma {
     fileType?: true
     status?: true
     resultFileUrl?: true
+    error?: true
     userId?: true
     createdAt?: true
     _all?: true
@@ -2390,6 +2396,7 @@ export namespace Prisma {
     fileType: string
     status: number
     resultFileUrl: string | null
+    error: string | null
     userId: number
     createdAt: Date
     _count: GenerateQueueCountAggregateOutputType | null
@@ -2419,6 +2426,7 @@ export namespace Prisma {
     fileType?: boolean
     status?: boolean
     resultFileUrl?: boolean
+    error?: boolean
     userId?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -2430,6 +2438,7 @@ export namespace Prisma {
     fileType?: boolean
     status?: boolean
     resultFileUrl?: boolean
+    error?: boolean
     userId?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -2441,6 +2450,7 @@ export namespace Prisma {
     fileType?: boolean
     status?: boolean
     resultFileUrl?: boolean
+    error?: boolean
     userId?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -2452,11 +2462,12 @@ export namespace Prisma {
     fileType?: boolean
     status?: boolean
     resultFileUrl?: boolean
+    error?: boolean
     userId?: boolean
     createdAt?: boolean
   }
 
-  export type GenerateQueueOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "file" | "fileType" | "status" | "resultFileUrl" | "userId" | "createdAt", ExtArgs["result"]["generateQueue"]>
+  export type GenerateQueueOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "file" | "fileType" | "status" | "resultFileUrl" | "error" | "userId" | "createdAt", ExtArgs["result"]["generateQueue"]>
   export type GenerateQueueInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -2478,6 +2489,7 @@ export namespace Prisma {
       fileType: string
       status: number
       resultFileUrl: string | null
+      error: string | null
       userId: number
       createdAt: Date
     }, ExtArgs["result"]["generateQueue"]>
@@ -2909,6 +2921,7 @@ export namespace Prisma {
     readonly fileType: FieldRef<"GenerateQueue", 'String'>
     readonly status: FieldRef<"GenerateQueue", 'Int'>
     readonly resultFileUrl: FieldRef<"GenerateQueue", 'String'>
+    readonly error: FieldRef<"GenerateQueue", 'String'>
     readonly userId: FieldRef<"GenerateQueue", 'Int'>
     readonly createdAt: FieldRef<"GenerateQueue", 'DateTime'>
   }
@@ -3349,7 +3362,6 @@ export namespace Prisma {
     id: number | null
     name: string | null
     fileUrl: string | null
-    imageUrl: string | null
     createdAt: Date | null
     userId: number | null
   }
@@ -3358,7 +3370,6 @@ export namespace Prisma {
     id: number | null
     name: string | null
     fileUrl: string | null
-    imageUrl: string | null
     createdAt: Date | null
     userId: number | null
   }
@@ -3367,7 +3378,6 @@ export namespace Prisma {
     id: number
     name: number
     fileUrl: number
-    imageUrl: number
     createdAt: number
     userId: number
     _all: number
@@ -3388,7 +3398,6 @@ export namespace Prisma {
     id?: true
     name?: true
     fileUrl?: true
-    imageUrl?: true
     createdAt?: true
     userId?: true
   }
@@ -3397,7 +3406,6 @@ export namespace Prisma {
     id?: true
     name?: true
     fileUrl?: true
-    imageUrl?: true
     createdAt?: true
     userId?: true
   }
@@ -3406,7 +3414,6 @@ export namespace Prisma {
     id?: true
     name?: true
     fileUrl?: true
-    imageUrl?: true
     createdAt?: true
     userId?: true
     _all?: true
@@ -3502,7 +3509,6 @@ export namespace Prisma {
     id: number
     name: string
     fileUrl: string
-    imageUrl: string
     createdAt: Date
     userId: number | null
     _count: GeneratedModelCountAggregateOutputType | null
@@ -3530,7 +3536,6 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     fileUrl?: boolean
-    imageUrl?: boolean
     createdAt?: boolean
     userId?: boolean
     user?: boolean | GeneratedModel$userArgs<ExtArgs>
@@ -3540,7 +3545,6 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     fileUrl?: boolean
-    imageUrl?: boolean
     createdAt?: boolean
     userId?: boolean
     user?: boolean | GeneratedModel$userArgs<ExtArgs>
@@ -3550,7 +3554,6 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     fileUrl?: boolean
-    imageUrl?: boolean
     createdAt?: boolean
     userId?: boolean
     user?: boolean | GeneratedModel$userArgs<ExtArgs>
@@ -3560,12 +3563,11 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     fileUrl?: boolean
-    imageUrl?: boolean
     createdAt?: boolean
     userId?: boolean
   }
 
-  export type GeneratedModelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "fileUrl" | "imageUrl" | "createdAt" | "userId", ExtArgs["result"]["generatedModel"]>
+  export type GeneratedModelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "fileUrl" | "createdAt" | "userId", ExtArgs["result"]["generatedModel"]>
   export type GeneratedModelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | GeneratedModel$userArgs<ExtArgs>
   }
@@ -3585,7 +3587,6 @@ export namespace Prisma {
       id: number
       name: string
       fileUrl: string
-      imageUrl: string
       createdAt: Date
       userId: number | null
     }, ExtArgs["result"]["generatedModel"]>
@@ -4015,7 +4016,6 @@ export namespace Prisma {
     readonly id: FieldRef<"GeneratedModel", 'Int'>
     readonly name: FieldRef<"GeneratedModel", 'String'>
     readonly fileUrl: FieldRef<"GeneratedModel", 'String'>
-    readonly imageUrl: FieldRef<"GeneratedModel", 'String'>
     readonly createdAt: FieldRef<"GeneratedModel", 'DateTime'>
     readonly userId: FieldRef<"GeneratedModel", 'Int'>
   }
@@ -4476,6 +4476,7 @@ export namespace Prisma {
     fileType: 'fileType',
     status: 'status',
     resultFileUrl: 'resultFileUrl',
+    error: 'error',
     userId: 'userId',
     createdAt: 'createdAt'
   };
@@ -4487,7 +4488,6 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     fileUrl: 'fileUrl',
-    imageUrl: 'imageUrl',
     createdAt: 'createdAt',
     userId: 'userId'
   };
@@ -4618,6 +4618,7 @@ export namespace Prisma {
     fileType?: StringFilter<"GenerateQueue"> | string
     status?: IntFilter<"GenerateQueue"> | number
     resultFileUrl?: StringNullableFilter<"GenerateQueue"> | string | null
+    error?: StringNullableFilter<"GenerateQueue"> | string | null
     userId?: IntFilter<"GenerateQueue"> | number
     createdAt?: DateTimeFilter<"GenerateQueue"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -4629,6 +4630,7 @@ export namespace Prisma {
     fileType?: SortOrder
     status?: SortOrder
     resultFileUrl?: SortOrderInput | SortOrder
+    error?: SortOrderInput | SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     user?: UserOrderByWithRelationInput
@@ -4643,6 +4645,7 @@ export namespace Prisma {
     fileType?: StringFilter<"GenerateQueue"> | string
     status?: IntFilter<"GenerateQueue"> | number
     resultFileUrl?: StringNullableFilter<"GenerateQueue"> | string | null
+    error?: StringNullableFilter<"GenerateQueue"> | string | null
     userId?: IntFilter<"GenerateQueue"> | number
     createdAt?: DateTimeFilter<"GenerateQueue"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -4654,6 +4657,7 @@ export namespace Prisma {
     fileType?: SortOrder
     status?: SortOrder
     resultFileUrl?: SortOrderInput | SortOrder
+    error?: SortOrderInput | SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     _count?: GenerateQueueCountOrderByAggregateInput
@@ -4672,6 +4676,7 @@ export namespace Prisma {
     fileType?: StringWithAggregatesFilter<"GenerateQueue"> | string
     status?: IntWithAggregatesFilter<"GenerateQueue"> | number
     resultFileUrl?: StringNullableWithAggregatesFilter<"GenerateQueue"> | string | null
+    error?: StringNullableWithAggregatesFilter<"GenerateQueue"> | string | null
     userId?: IntWithAggregatesFilter<"GenerateQueue"> | number
     createdAt?: DateTimeWithAggregatesFilter<"GenerateQueue"> | Date | string
   }
@@ -4683,7 +4688,6 @@ export namespace Prisma {
     id?: IntFilter<"GeneratedModel"> | number
     name?: StringFilter<"GeneratedModel"> | string
     fileUrl?: StringFilter<"GeneratedModel"> | string
-    imageUrl?: StringFilter<"GeneratedModel"> | string
     createdAt?: DateTimeFilter<"GeneratedModel"> | Date | string
     userId?: IntNullableFilter<"GeneratedModel"> | number | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
@@ -4693,7 +4697,6 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     fileUrl?: SortOrder
-    imageUrl?: SortOrder
     createdAt?: SortOrder
     userId?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
@@ -4706,7 +4709,6 @@ export namespace Prisma {
     NOT?: GeneratedModelWhereInput | GeneratedModelWhereInput[]
     name?: StringFilter<"GeneratedModel"> | string
     fileUrl?: StringFilter<"GeneratedModel"> | string
-    imageUrl?: StringFilter<"GeneratedModel"> | string
     createdAt?: DateTimeFilter<"GeneratedModel"> | Date | string
     userId?: IntNullableFilter<"GeneratedModel"> | number | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
@@ -4716,7 +4718,6 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     fileUrl?: SortOrder
-    imageUrl?: SortOrder
     createdAt?: SortOrder
     userId?: SortOrderInput | SortOrder
     _count?: GeneratedModelCountOrderByAggregateInput
@@ -4733,7 +4734,6 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"GeneratedModel"> | number
     name?: StringWithAggregatesFilter<"GeneratedModel"> | string
     fileUrl?: StringWithAggregatesFilter<"GeneratedModel"> | string
-    imageUrl?: StringWithAggregatesFilter<"GeneratedModel"> | string
     createdAt?: DateTimeWithAggregatesFilter<"GeneratedModel"> | Date | string
     userId?: IntNullableWithAggregatesFilter<"GeneratedModel"> | number | null
   }
@@ -4797,6 +4797,7 @@ export namespace Prisma {
     fileType: string
     status?: number
     resultFileUrl?: string | null
+    error?: string | null
     createdAt?: Date | string
     user: UserCreateNestedOneWithoutGenerateQueueInput
   }
@@ -4807,6 +4808,7 @@ export namespace Prisma {
     fileType: string
     status?: number
     resultFileUrl?: string | null
+    error?: string | null
     userId: number
     createdAt?: Date | string
   }
@@ -4816,6 +4818,7 @@ export namespace Prisma {
     fileType?: StringFieldUpdateOperationsInput | string
     status?: IntFieldUpdateOperationsInput | number
     resultFileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    error?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutGenerateQueueNestedInput
   }
@@ -4826,6 +4829,7 @@ export namespace Prisma {
     fileType?: StringFieldUpdateOperationsInput | string
     status?: IntFieldUpdateOperationsInput | number
     resultFileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    error?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4836,6 +4840,7 @@ export namespace Prisma {
     fileType: string
     status?: number
     resultFileUrl?: string | null
+    error?: string | null
     userId: number
     createdAt?: Date | string
   }
@@ -4845,6 +4850,7 @@ export namespace Prisma {
     fileType?: StringFieldUpdateOperationsInput | string
     status?: IntFieldUpdateOperationsInput | number
     resultFileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    error?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -4854,6 +4860,7 @@ export namespace Prisma {
     fileType?: StringFieldUpdateOperationsInput | string
     status?: IntFieldUpdateOperationsInput | number
     resultFileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    error?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4861,7 +4868,6 @@ export namespace Prisma {
   export type GeneratedModelCreateInput = {
     name: string
     fileUrl: string
-    imageUrl: string
     createdAt?: Date | string
     user?: UserCreateNestedOneWithoutGeneratedModelsInput
   }
@@ -4870,7 +4876,6 @@ export namespace Prisma {
     id?: number
     name: string
     fileUrl: string
-    imageUrl: string
     createdAt?: Date | string
     userId?: number | null
   }
@@ -4878,7 +4883,6 @@ export namespace Prisma {
   export type GeneratedModelUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     fileUrl?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneWithoutGeneratedModelsNestedInput
   }
@@ -4887,7 +4891,6 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     fileUrl?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: NullableIntFieldUpdateOperationsInput | number | null
   }
@@ -4896,7 +4899,6 @@ export namespace Prisma {
     id?: number
     name: string
     fileUrl: string
-    imageUrl: string
     createdAt?: Date | string
     userId?: number | null
   }
@@ -4904,7 +4906,6 @@ export namespace Prisma {
   export type GeneratedModelUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
     fileUrl?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -4912,7 +4913,6 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     fileUrl?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: NullableIntFieldUpdateOperationsInput | number | null
   }
@@ -5086,6 +5086,7 @@ export namespace Prisma {
     fileType?: SortOrder
     status?: SortOrder
     resultFileUrl?: SortOrder
+    error?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
   }
@@ -5102,6 +5103,7 @@ export namespace Prisma {
     fileType?: SortOrder
     status?: SortOrder
     resultFileUrl?: SortOrder
+    error?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
   }
@@ -5112,6 +5114,7 @@ export namespace Prisma {
     fileType?: SortOrder
     status?: SortOrder
     resultFileUrl?: SortOrder
+    error?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
   }
@@ -5169,7 +5172,6 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     fileUrl?: SortOrder
-    imageUrl?: SortOrder
     createdAt?: SortOrder
     userId?: SortOrder
   }
@@ -5183,7 +5185,6 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     fileUrl?: SortOrder
-    imageUrl?: SortOrder
     createdAt?: SortOrder
     userId?: SortOrder
   }
@@ -5192,7 +5193,6 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     fileUrl?: SortOrder
-    imageUrl?: SortOrder
     createdAt?: SortOrder
     userId?: SortOrder
   }
@@ -5547,7 +5547,6 @@ export namespace Prisma {
   export type GeneratedModelCreateWithoutUserInput = {
     name: string
     fileUrl: string
-    imageUrl: string
     createdAt?: Date | string
   }
 
@@ -5555,7 +5554,6 @@ export namespace Prisma {
     id?: number
     name: string
     fileUrl: string
-    imageUrl: string
     createdAt?: Date | string
   }
 
@@ -5573,6 +5571,7 @@ export namespace Prisma {
     fileType: string
     status?: number
     resultFileUrl?: string | null
+    error?: string | null
     createdAt?: Date | string
   }
 
@@ -5582,6 +5581,7 @@ export namespace Prisma {
     fileType: string
     status?: number
     resultFileUrl?: string | null
+    error?: string | null
     createdAt?: Date | string
   }
 
@@ -5617,7 +5617,6 @@ export namespace Prisma {
     id?: IntFilter<"GeneratedModel"> | number
     name?: StringFilter<"GeneratedModel"> | string
     fileUrl?: StringFilter<"GeneratedModel"> | string
-    imageUrl?: StringFilter<"GeneratedModel"> | string
     createdAt?: DateTimeFilter<"GeneratedModel"> | Date | string
     userId?: IntNullableFilter<"GeneratedModel"> | number | null
   }
@@ -5647,6 +5646,7 @@ export namespace Prisma {
     fileType?: StringFilter<"GenerateQueue"> | string
     status?: IntFilter<"GenerateQueue"> | number
     resultFileUrl?: StringNullableFilter<"GenerateQueue"> | string | null
+    error?: StringNullableFilter<"GenerateQueue"> | string | null
     userId?: IntFilter<"GenerateQueue"> | number
     createdAt?: DateTimeFilter<"GenerateQueue"> | Date | string
   }
@@ -5747,7 +5747,6 @@ export namespace Prisma {
     id?: number
     name: string
     fileUrl: string
-    imageUrl: string
     createdAt?: Date | string
   }
 
@@ -5757,13 +5756,13 @@ export namespace Prisma {
     fileType: string
     status?: number
     resultFileUrl?: string | null
+    error?: string | null
     createdAt?: Date | string
   }
 
   export type GeneratedModelUpdateWithoutUserInput = {
     name?: StringFieldUpdateOperationsInput | string
     fileUrl?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5771,7 +5770,6 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     fileUrl?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5779,7 +5777,6 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     fileUrl?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5788,6 +5785,7 @@ export namespace Prisma {
     fileType?: StringFieldUpdateOperationsInput | string
     status?: IntFieldUpdateOperationsInput | number
     resultFileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    error?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5797,6 +5795,7 @@ export namespace Prisma {
     fileType?: StringFieldUpdateOperationsInput | string
     status?: IntFieldUpdateOperationsInput | number
     resultFileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    error?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5806,6 +5805,7 @@ export namespace Prisma {
     fileType?: StringFieldUpdateOperationsInput | string
     status?: IntFieldUpdateOperationsInput | number
     resultFileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    error?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

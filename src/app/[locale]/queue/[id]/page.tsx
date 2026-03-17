@@ -36,7 +36,7 @@ export default async function QueueOrderPage({ params }: Props) {
         </Link>
         <h1 className="asset-detail__title">{t("title")} #{order.id}</h1>
         <div
-          className="asset-detail__preview"
+          className="asset-detail__preview asset-detail__preview--fit"
           style={{
             backgroundImage: `url(/api/queue/${order.id}/image)`,
           }}
@@ -73,6 +73,14 @@ export default async function QueueOrderPage({ params }: Props) {
           <dd className="asset-detail__meta-desc">
             {t(`status${order.status}` as "status0" | "status1" | "status2")}
           </dd>
+          {order.error && (
+            <>
+              <dt className="asset-detail__meta-term">{t("error")}</dt>
+              <dd className="asset-detail__meta-desc asset-detail__meta-desc--error">
+                {order.error}
+              </dd>
+            </>
+          )}
         </dl>
       </div>
     </div>

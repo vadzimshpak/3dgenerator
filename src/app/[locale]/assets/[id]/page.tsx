@@ -2,6 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Link } from "@/i18n/navigation";
 import { prisma } from "@/lib/db";
+import { ModelPreview } from "@/components/ModelPreview";
 
 type Props = {
   params: Promise<{ locale: string; id: string }>;
@@ -29,10 +30,9 @@ export default async function AssetDetailPage({ params }: Props) {
           {t("backToList")}
         </Link>
         <h1 className="asset-detail__title">{model.name}</h1>
-        <div
-          className="asset-detail__preview"
-          style={{ backgroundImage: `url(${model.imageUrl})` }}
-        />
+        <div className="asset-detail__preview">
+          <ModelPreview src={model.fileUrl} alt={model.name} />
+        </div>
         <dl className="asset-detail__meta">
           {model.user && (
             <>

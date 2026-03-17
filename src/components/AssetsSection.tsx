@@ -1,9 +1,10 @@
 import { Link } from "@/i18n/navigation";
+import { ModelPreview } from "@/components/ModelPreview";
 
 export type AssetModel = {
   id: number;
   name: string;
-  imageUrl: string;
+  fileUrl: string;
 };
 
 type AssetsSectionProps = {
@@ -22,10 +23,9 @@ export function AssetsSection({ title, models }: AssetsSectionProps) {
             href={`/assets/${model.id}`}
             className="asset-card"
           >
-            <span
-              className="asset-card__image"
-              style={{ backgroundImage: `url(${model.imageUrl})` }}
-            />
+            <span className="asset-card__image">
+              <ModelPreview src={model.fileUrl} alt={model.name} interactive={false} />
+            </span>
             <span className="asset-card__name">{model.name}</span>
           </Link>
         ))}

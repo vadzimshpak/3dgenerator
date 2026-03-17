@@ -25,6 +25,7 @@ model GenerateQueue {
   fileType      String
   status        Int      @default(0) // 0 — в очереди, 1 — в обработке, 2 — готов
   resultFileUrl String? // ссылка на скачивание модели (появляется после обработки)
+  error         String? // сообщение об ошибке (если генерация завершилась неуспешно)
   userId        Int
   user          User     @relation(fields: [userId], references: [id])
   createdAt     DateTime @default(now())
@@ -34,7 +35,6 @@ model GeneratedModel {
   id        Int      @id @default(autoincrement())
   name      String
   fileUrl   String
-  imageUrl  String
   createdAt DateTime @default(now())
   userId    Int?
   user      User?    @relation(fields: [userId], references: [id])

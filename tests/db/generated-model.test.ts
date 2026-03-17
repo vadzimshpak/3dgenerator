@@ -7,7 +7,6 @@ describe("GeneratedModel", () => {
     const data = {
       name: "Тестовая модель",
       fileUrl: "https://example.com/model.glb",
-      imageUrl: "https://example.com/preview.png",
     };
 
     const created = await prisma.generatedModel.create({
@@ -17,7 +16,6 @@ describe("GeneratedModel", () => {
     expect(created.id).toBeDefined();
     expect(created.name).toBe(data.name);
     expect(created.fileUrl).toBe(data.fileUrl);
-    expect(created.imageUrl).toBe(data.imageUrl);
     expect(created.createdAt).toBeInstanceOf(Date);
 
     const found = await prisma.generatedModel.findUnique({

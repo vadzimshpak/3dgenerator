@@ -131,6 +131,7 @@ exports.Prisma.GenerateQueueScalarFieldEnum = {
   fileType: 'fileType',
   status: 'status',
   resultFileUrl: 'resultFileUrl',
+  error: 'error',
   userId: 'userId',
   createdAt: 'createdAt'
 };
@@ -139,7 +140,6 @@ exports.Prisma.GeneratedModelScalarFieldEnum = {
   id: 'id',
   name: 'name',
   fileUrl: 'fileUrl',
-  imageUrl: 'imageUrl',
   createdAt: 'createdAt',
   userId: 'userId'
 };
