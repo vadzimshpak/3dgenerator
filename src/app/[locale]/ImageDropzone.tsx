@@ -4,9 +4,17 @@ import { useRef, useState, useCallback, useEffect } from "react";
 
 type ImageDropzoneProps = {
   selectImageText: string;
+  isUploading?: boolean;
+  uploadProgress?: number | null;
+  onFileSelected?: (file: File | null) => void;
 };
 
-export function ImageDropzone({ selectImageText }: ImageDropzoneProps) {
+export function ImageDropzone({
+  selectImageText,
+  isUploading = false,
+  uploadProgress = null,
+  onFileSelected,
+}: ImageDropzoneProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
@@ -16,13 +24,17 @@ export function ImageDropzone({ selectImageText }: ImageDropzoneProps) {
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (!file || !file.type.startsWith("image/")) return;
+    if (!file || !file.type.startsWith("image/")) {
+      onFileSelected?.(null);
+      return;
+    }
+    onFileSelected?.(file);
 
     setPreviewUrl((prev) => {
       if (prev) URL.revokeObjectURL(prev);
       return URL.createObjectURL(file);
     });
-  }, []);
+  }, [onFileSelected]);
 
   useEffect(() => {
     return () => {
@@ -61,6 +73,15 @@ export function ImageDropzone({ selectImageText }: ImageDropzoneProps) {
           />
         ) : (
           <span className="generator__dropzone-text">{selectImageText}</span>
+        )}
+
+        {isUploading && (
+          <div className="generator__dropzone-progress" aria-hidden>
+            <div
+              className="generator__dropzone-progress-bar"
+              style={{ width: `${Math.min(100, Math.max(0, uploadProgress ?? 0))}%` }}
+            />
+          </div>
         )}
       </div>
     </>

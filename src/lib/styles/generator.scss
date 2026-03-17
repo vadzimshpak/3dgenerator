@@ -84,6 +84,25 @@
   background-repeat: no-repeat;
 }
 
+.generator__dropzone-progress {
+  position: absolute;
+  left: $space-sm;
+  right: $space-sm;
+  bottom: $space-sm;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.generator__dropzone-progress-bar {
+  height: 100%;
+  width: 0%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, $color-cherry, rgba(185, 28, 60, 0.35));
+  transition: width 0.15s ease;
+}
+
 .generator__btn {
   @include glass($blur: 8px, $bg: $color-cherry, $border: transparent);
   @include slide-up(0.5s, 0.2s);
@@ -101,6 +120,11 @@
 
   &:active {
     transform: scale(0.98);
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
   }
 }
 

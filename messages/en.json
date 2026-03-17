@@ -10,13 +10,14 @@
   },
   "home": {
     "title": "Free Image To 3D!",
-    "subtitle": "Temporary without textures!",
+    "subtitle": "Enjoy the process!",
     "selectImage": "Select Image",
     "generate": "Generate",
     "assets": "Assets",
     "errorNoFile": "Please select an image first",
     "errorNotImage": "File must be an image",
     "errorFileTooLarge": "Image size must not exceed 5 MB",
+    "errorUploadFailed": "Failed to upload image. Please try again.",
     "statsUsers": "users registered",
     "statsQueue": "active in queue",
     "statsModels": "models generated"
