@@ -46,7 +46,7 @@ async function processTask(task: {
   await writeFile(destPath, buffer);
   debug("Saved model to", destPath);
 
-  const fileUrl = `/model/${task.id}.glb`;
+  const fileUrl = `/media/${task.id}.glb`;
 
   await prisma.$transaction(async (tx) => {
     await tx.generateQueue.update({
