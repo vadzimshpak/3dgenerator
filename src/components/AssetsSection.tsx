@@ -1,5 +1,4 @@
 import { Link } from "@/i18n/navigation";
-import { ModelPreview } from "@/components/ModelPreview";
 
 export type AssetModel = {
   id: number;
@@ -23,9 +22,10 @@ export function AssetsSection({ title, models }: AssetsSectionProps) {
             href={`/assets/${model.id}`}
             className="asset-card"
           >
-            <span className="asset-card__image">
-              <ModelPreview src={model.fileUrl} alt={model.name} interactive={false} />
-            </span>
+            <span
+              className="asset-card__image asset-card__image--fit"
+              style={{ backgroundImage: `url(${model.fileUrl.replace('glb', 'jpg').replace('model', 'media')})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
+            />
             <span className="asset-card__name">{model.name}</span>
           </Link>
         ))}

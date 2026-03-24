@@ -10,6 +10,7 @@
     "test:watch": "vitest",
     "lint": "eslint",
     "generator": "npx tsx utils/generator.ts",
+    "render:images": "npx tsx utils/render-images.ts",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev",
@@ -21,6 +22,7 @@
     "jose": "^6.2.0",
     "next": "16.1.6",
     "next-intl": "^4.8.3",
+    "puppeteer": "^24.40.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "sass": "^1.97.3"
